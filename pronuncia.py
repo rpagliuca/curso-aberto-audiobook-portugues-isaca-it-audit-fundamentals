@@ -26,6 +26,7 @@ FONETICA = [
     (r"\bCAATs\b", "C.A.A.T.S."),
     (r"\bbackups\b", "bêcápis"),
     (r"\blog\b", "lógue"),
+    (r"\bISACA\b", "Izaca"),  # Rafael 2026-11-13: palavra corrida, não soletrada
     (r"\bIT Audit Fundamentals\b", "ái-tí audíti fândamêntous"),
     (r"\bIT general controls\b", "ái-tí djênerau contrôuls"),
     (r"\btools and techniques\b", "túls ênd tekníks"),
