@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISACA IT Audit Fundamentals — curso em áudio</title>
+<meta name="description" content="Curso aberto em português, em áudio, para a prova ISACA IT Audit Fundamentals.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;padding:24px 16px 60px}
+  header{text-align:center;margin-bottom:32px}
+  header h1{font-size:1.4rem;font-weight:700;color:#f8fafc;letter-spacing:-.02em}
+  header p{margin-top:6px;font-size:.85rem;color:#94a3b8}
+  .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .badge{display:inline-block;padding:4px 12px;background:#1e3a5f;color:#60a5fa;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .badge.green{background:#14532d;color:#86efac}
+  .card{background:#1e2130;border:1px solid #2d3448;border-radius:14px;padding:20px;margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
+  .card-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+  .ep-num{flex-shrink:0;width:36px;height:36px;background:#1e3a5f;color:#60a5fa;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+  .card-meta{flex:1;min-width:0}
+  .card-meta h2{font-size:.95rem;font-weight:600;color:#f1f5f9;line-height:1.3}
+  .card-meta .topics{margin-top:5px;font-size:.76rem;color:#64748b;line-height:1.5}
+  .duration{flex-shrink:0;font-size:.76rem;color:#475569;font-variant-numeric:tabular-nums;padding-top:2px}
+  audio{width:100%;height:44px;border-radius:8px;outline:none;margin-bottom:14px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .tag{padding:2px 8px;border-radius:4px;font-size:.68rem;font-weight:600;background:#172554;color:#93c5fd;border:1px solid #1e3a8a}
+  .tag.green{background:#14532d;color:#86efac;border-color:#166534}
+  .tag.purple{background:#3b0764;color:#d8b4fe;border-color:#6b21a8}
+  .tag.amber{background:#451a03;color:#fcd34d;border-color:#78350f}
+
+  /* Toggle buttons */
+  .actions{display:flex;gap:8px;margin-bottom:0}
+  .btn-toggle{flex:1;padding:9px 12px;border:1px solid #2d3448;border-radius:8px;background:#161b27;color:#94a3b8;font-size:.8rem;font-weight:600;cursor:pointer;text-align:center;transition:all .15s;user-select:none}
+  .btn-toggle:hover{border-color:#3d4d6a;color:#cbd5e1}
+  .btn-toggle.active{border-color:#3b82f6;color:#60a5fa;background:#172554}
+
+  /* Collapsible panels */
+  .panel{overflow:hidden;max-height:0;transition:max-height .3s ease}
+  .panel.open{max-height:9999px}
+  .panel-inner{padding-top:14px}
+
+  /* Resumo */
+  .resumo-title{font-size:.75rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  .resumo-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .resumo-list li{font-size:.83rem;color:#cbd5e1;line-height:1.5;padding-left:14px;position:relative}
+  .resumo-list li::before{content:"›";position:absolute;left:0;color:#3b82f6;font-weight:700}
+
+  /* Quiz */
+  .quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .quiz-title{font-size:.75rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.06em}
+  .quiz-progress{font-size:.72rem;color:#475569}
+  .question-block{display:none}
+  .question-block.active{display:block}
+  .question-text{font-size:.88rem;color:#e2e8f0;line-height:1.6;margin-bottom:14px;font-weight:500}
+  .options{display:flex;flex-direction:column;gap:7px}
+  .option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid #2d3448;border-radius:8px;cursor:pointer;transition:all .15s;font-size:.83rem;color:#94a3b8;line-height:1.5}
+  .option:hover:not(.disabled){border-color:#3d4d6a;color:#cbd5e1;background:#1a2133}
+  .option .opt-letter{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:1px solid #3d4d6a;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#64748b}
+  .option.correct{border-color:#22c55e;color:#86efac;background:#0f2a1a}
+  .option.correct .opt-letter{border-color:#22c55e;background:#14532d;color:#86efac}
+  .option.wrong{border-color:#ef4444;color:#fca5a5;background:#2a0f0f}
+  .option.wrong .opt-letter{border-color:#ef4444;background:#450a0a;color:#fca5a5}
+  .option.disabled{cursor:default;pointer-events:none}
+  .explanation{margin-top:12px;padding:10px 12px;background:#0f1a2e;border:1px solid #1e3a5f;border-radius:8px;font-size:.8rem;color:#93c5fd;line-height:1.6}
+  .explanation strong{color:#60a5fa}
+  .quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+  .btn-next{padding:8px 18px;background:#1e3a5f;border:1px solid #3b82f6;border-radius:8px;color:#60a5fa;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .15s;display:none}
+  .btn-next:hover{background:#172554}
+  .quiz-result{text-align:center;padding:16px;border-radius:10px;font-size:.9rem;font-weight:600}
+  .quiz-result.pass{background:#0f2a1a;border:1px solid #22c55e;color:#86efac}
+  .quiz-result.fail{background:#2a0f0f;border:1px solid #ef4444;color:#fca5a5}
+  .quiz-result .score-big{font-size:1.8rem;font-weight:700;display:block;margin-bottom:6px}
+  .btn-retry{margin-top:12px;padding:8px 18px;background:#1e3a5f;border:1px solid #3b82f6;border-radius:8px;color:#60a5fa;font-size:.8rem;font-weight:600;cursor:pointer}
+
+  /* Skip buttons */
+  .skip-row{display:flex;gap:6px;margin-bottom:14px}
+  .btn-skip{flex:1;padding:8px 4px;border:1px solid #2d3448;border-radius:7px;background:#161b27;color:#94a3b8;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .15s;text-align:center}
+  .btn-skip:hover{border-color:#3d4d6a;color:#e2e8f0}
+  .btn-skip:active{background:#1e2a40}
+
+  /* Player único (motor de áudio compartilhado) */
+  .player{display:flex;align-items:center;gap:10px;margin-bottom:14px;background:#161b27;border:1px solid #2d3448;border-radius:10px;padding:8px 12px}
+  .player .pp{flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid #3b82f6;background:#1e3a5f;color:#60a5fa;font-size:1rem;cursor:pointer}
+  .player .seek{flex:1;min-width:0;accent-color:#3b82f6;height:28px}
+  .player .time{flex-shrink:0;font-size:.74rem;color:#94a3b8;font-variant-numeric:tabular-nums}
+  .card.current{border-color:#3b82f6}
+  .carhint{max-width:680px;margin:0 auto 16px;font-size:.76rem;color:#94a3b8;text-align:center;line-height:1.5}
+  #nowbar{position:fixed;left:0;right:0;bottom:0;background:#161b27;border-top:1px solid #2d3448;padding:8px 12px calc(8px + env(safe-area-inset-bottom));z-index:10}
+  #nowbar .nb-title{max-width:680px;margin:0 auto 6px;font-size:.76rem;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+  #nowbar .nb-btns{max-width:680px;margin:0 auto;display:flex;gap:6px}
+  #nowbar button{flex:1;height:48px;border:1px solid #2d3448;border-radius:10px;background:#1e2130;color:#e2e8f0;font-size:1.05rem;font-weight:700;cursor:pointer}
+  #nowbar button.main{border-color:#3b82f6;background:#1e3a5f;color:#60a5fa;flex:1.4}
+  body{padding-bottom:150px}
+
+  .section-head{max-width:680px;margin:36px auto 16px;text-align:center}
+  .section-head h2{font-size:1.1rem;color:#f8fafc}
+  .section-head p{margin-top:6px;font-size:.8rem;color:#94a3b8;line-height:1.5}
+  .ep-num.qa{background:#3b0764;color:#d8b4fe;font-size:.78rem}
+  .qa-list details summary{cursor:pointer;list-style:none;color:#cbd5e1}
+  .qa-list details summary::-webkit-details-marker{display:none}
+  .qa-list details p{margin:6px 0 4px;padding:8px 10px;background:#0f1a2e;border:1px solid #1e3a5f;border-radius:8px;color:#93c5fd;font-size:.8rem;line-height:1.55}
+  .qa-list details p strong{color:#60a5fa}
+
+  footer{text-align:center;margin-top:40px;font-size:.7rem;color:#334155}
+
+  .transcricao p{font-size:.85rem;color:#cbd5e1;line-height:1.65;margin-bottom:10px}
+  .card.pendente{opacity:.45}
+  .card.pendente .duration{color:#64748b}
+  .tag.slate{background:#1e293b;color:#94a3b8;border-color:#334155}
+</style>
+</head>
+<body>
+<header>
+  <h1>ISACA IT Audit Fundamentals</h1>
+  <p>Curso aberto em áudio, em português · para ouvir no carro, na caminhada, na academia</p>
+  <div class="badges">
+    <span class="badge">1 de 10 seções · 9:49</span>
+    <span class="badge green">Quiz e resumo por seção</span>
+    <span class="badge green">Transcrição completa</span>
+  </div>
+</header>
+
+<p class="carhint">🚗 No carro ou no fone: ⏮ volta 10 s · ⏭ avança 10 s · atravessa as seções como faixa única</p>
+
+<div class="section-head"><h2>Conteúdo</h2><p>Uma seção de até 10 minutos para cada 10% da prova. Executar a auditoria (35%) ocupa quatro seções; ambiente de TI (25%), três.</p></div>
+<div class="card" id="card-1">
+  <div class="card-header">
+    <div class="ep-num">1</div>
+    <div class="card-meta">
+      <h2>A função de auditoria, controles e riscos</h2>
+      <div class="topics">A prova · fases da auditoria · carta de auditoria · independência · três linhas · normas da ISACA e ITAF · tipos de controle · risco de auditoria</div>
+    </div>
+    <div class="duration">9:49</div>
+  </div>
+  <div class="player" data-ep="1" data-label="Seção 1" data-src="s01-funcao-de-auditoria-controles-e-riscos.mp3">
+    <button class="pp" aria-label="Tocar ou pausar a seção 1">▶</button>
+    <input class="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Posição na seção 1">
+    <span class="time">0:00</span>
+  </div>
+  <div class="skip-row">
+    <button class="btn-skip" onclick="skip('audio-1',-30)">−30s</button>
+    <button class="btn-skip" onclick="skip('audio-1',-10)">−10s</button>
+    <button class="btn-skip" onclick="skip('audio-1',+10)">+10s</button>
+    <button class="btn-skip" onclick="skip('audio-1',+30)">+30s</button>
+  </div>
+  <div class="tags"><span class="tag">Audit Function 5% · Controls, Risk and Audit 8%</span><span class="tag amber">3 fixações no áudio</span></div>
+  <div class="actions">
+    <button class="btn-toggle" onclick="togglePanel('resumo-1',this)">📋 Resumo</button>
+    <button class="btn-toggle" onclick="togglePanel('quiz-1',this)">🧠 Quiz · 6</button>
+    <button class="btn-toggle" onclick="togglePanel('transcricao-1',this)">📄 Transcrição</button>
+  </div>
+  <div class="panel" id="resumo-1"><div class="panel-inner"><div class="resumo-title">Pontos da seção</div><ul class="resumo-list"><li>Prova: 2 h, online com fiscal remoto, aprovação com 65%. Pesos: executar a auditoria 35%, ambiente de TI 25%, temas específicos 15%, tecnologias novas 12%, controles e riscos 8%, função de auditoria 5%.</li><li>Fases da auditoria: planejamento (planning), trabalho de campo (fieldwork), relatório e acompanhamento (reporting, follow-up).</li><li>Carta de auditoria (audit charter): responsabilidade, autoridade e prestação de contas da função; aprovada pelo conselho e pelo comitê de auditoria. Carta de contratação (engagement letter): um trabalho específico.</li><li>Independência organizacional (posição na estrutura) e profissional (postura do auditor). A auditoria reporta ao comitê de auditoria.</li><li>Três linhas (IIA): gestão operacional, risco e conformidade, auditoria interna.</li><li>ISACA: normas (obrigatórias: gerais, de execução, de relatório), diretrizes, ferramentas e técnicas; tudo dentro do ITAF.</li><li>Controles: preventivo, detectivo, corretivo; manual ou automatizado; objetivo de controle e atividade de controle; controles gerais de TI e de aplicação; compensatório e sobreposto.</li><li>Risco de auditoria = inerente + de controle + de detecção; o auditor só controla o de detecção. Materialidade: o que importa para quem decide.</li></ul></div></div>
+  <div class="panel" id="quiz-1"><div class="panel-inner"><div id="quiz-1-body"></div></div></div>
+  <div class="panel" id="transcricao-1"><div class="panel-inner transcricao"><p>Bem-vindo ao curso de preparação para o certificado IT Audit Fundamentals, da ISACA. Antes do conteúdo, uma palavra sobre a prova e sobre como este curso está montado.</p><p>A prova tem duas horas, é feita pela internet com um fiscal acompanhando pela câmera, e a nota mínima para aprovação é sessenta e cinco por cento. O conteúdo se divide em seis domínios, cada um com um peso. Executar uma auditoria vale trinta e cinco por cento. Ambiente e componentes de TI vale vinte e cinco. Temas específicos de auditoria vale quinze. Visão geral de tecnologias novas vale doze. Controles, riscos e auditoria vale oito. E a função de auditoria vale cinco.</p><p>Este curso tem dez seções de cerca de dez minutos, uma para cada dez por cento da prova. Esta primeira junta a função de auditoria e controles e riscos; depois vêm quatro seções sobre executar uma auditoria, três sobre o ambiente de TI, uma sobre temas específicos e uma sobre tecnologias novas. A prova é em inglês, então, sempre que um termo aparecer, você vai ouvir também o nome dele em inglês.</p><p>Vamos começar pelo que é, afinal, uma auditoria de sistemas de informação. É o exame formal, com testes, para saber quatro coisas. Primeiro, se os sistemas cumprem leis, regulamentos, contratos e normas do setor. Segundo, se seguem as políticas e os procedimentos da própria organização. Terceiro, se os dados têm o nível adequado de confidencialidade, integridade e disponibilidade. E quarto, se a operação de TI é eficiente e atinge as metas.</p><p>Para isso, o auditor revisa os controles, reúne evidências, avalia os pontos fortes e fracos e escreve um relatório com as fraquezas e as recomendações.</p><p>O processo típico tem três grandes fases. A primeira é o planejamento, em inglês planning. A segunda é o trabalho de campo, chamado fieldwork, em que o auditor testa e documenta. A terceira é o relatório e o acompanhamento, reporting e follow-up. Guarde essas três fases, porque as quatro seções sobre executar uma auditoria seguem exatamente essa ordem.</p><p>Para a ISACA, sistema de informação é mais amplo que tecnologia da informação: inclui, além do equipamento e do software, os processos e as pessoas que usam a informação.</p><p>Agora, a função de auditoria dentro da organização. A auditoria de sistemas pode fazer parte da auditoria interna, pode ser um grupo independente ou pode trabalhar junto com a auditoria financeira. Em qualquer caso, o papel dela precisa estar escrito num documento chamado carta de auditoria, em inglês audit charter. A carta de auditoria define a responsabilidade, a autoridade e a prestação de contas da função de auditoria. Quem a aprova é o nível mais alto da organização: o conselho de administração e o comitê de auditoria.</p><p>Não confunda a carta de auditoria com a carta de contratação, a engagement letter. A carta de auditoria cobre toda a atividade de auditoria da organização. A carta de contratação trata de um trabalho específico, com um objetivo próprio.</p><p>Um princípio atravessa tudo isso: independência. A função de auditoria deve se reportar ao comitê de auditoria, e não à área que ela audita. A ISACA separa dois tipos. A independência organizacional diz respeito à posição da auditoria na estrutura da empresa. A independência profissional diz respeito à postura do auditor: ele não pode ter interesse no resultado. Se um auditor ajudou a implantar um sistema, ele não deveria auditar esse mesmo sistema logo depois. Na prova, diante de um conflito de interesse, a resposta costuma ser comunicar o conflito antes de seguir.</p><p>Um modelo útil para situar a auditoria é o das três linhas, publicado pelo Instituto dos Auditores Internos, o IIA. A primeira linha é a gestão operacional, que é dona dos riscos e executa os controles no dia a dia. A segunda linha são as funções de risco e de conformidade, que apoiam e monitoram a primeira. A terceira linha é a auditoria interna, que dá uma avaliação independente sobre as duas primeiras.</p><p>A ISACA organiza a prática profissional em três camadas de documentos. As normas, em inglês standards, são obrigatórias. As diretrizes, guidelines, explicam como aplicar as normas. As ferramentas e técnicas, tools and techniques, dão exemplos e não criam exigência. As normas, por sua vez, se dividem em três grupos. As normas gerais tratam de ética, independência, objetividade, cuidado profissional e competência. As normas de execução, performance, tratam do planejamento, do escopo, do risco, da evidência e da supervisão. E as normas de relatório, reporting, tratam do tipo de relatório e do que deve ser comunicado. Tudo isso faz parte do ITAF, o framework de auditoria de TI da ISACA. A prova não pede números de normas; ela pede que você saiba aplicá-las.</p><p>Por fim, o código de ética da ISACA. Os pontos que mais caem são: trabalhar com objetividade e cuidado profissional, manter sigilo sobre o que soube no trabalho, a menos que a lei exija divulgação, aceitar só trabalhos para os quais tem competência e informar todos os fatos relevantes que, omitidos, distorceriam o resultado.</p><p>Agora, o segundo domínio desta seção: controles, riscos e auditoria.</p><p>Um controle é uma política, um procedimento, uma prática ou uma estrutura organizacional que reduz o risco. O controle interno, internal control, existe para dar à gestão segurança razoável de que os objetivos serão atingidos e de que eventos indesejados serão evitados, ou detectados e corrigidos. A expressão segurança razoável, reasonable assurance, aparece muito na prova: nenhum controle dá certeza absoluta.</p><p>Os controles se classificam pela função. O controle preventivo, preventive, impede que o erro ou o ataque aconteça. Exemplos: segregação de funções, controle de acesso, validação de dados na entrada, criptografia. O controle detectivo, detective, percebe e avisa que algo aconteceu. Exemplos: revisão de logs de acesso, totais de controle, relatórios de exceção, a própria auditoria interna. O controle corretivo, corrective, reduz o impacto e conserta o problema. Exemplos: backup, plano de recuperação de desastres, plano de resposta a incidentes.</p><p>Os controles também podem ser manuais ou automatizados. E aqui entram duas ideias que a prova cobra. O objetivo de controle, control objective, é o resultado que se quer alcançar, por exemplo, garantir que só pessoas autorizadas alterem a folha de pagamento. A atividade de controle, ou medida de controle, é o que de fato se faz para chegar lá, por exemplo, exigir aprovação de um gestor para cada alteração.</p><p>Outra distinção importante: controles gerais de TI e controles de aplicação. Os controles gerais, em inglês IT general controls, valem para todo o ambiente: gestão de acesso, gestão de mudanças, operação, backup, segurança física. Os controles de aplicação, application controls, ficam dentro de um sistema específico e cuidam da entrada, do processamento e da saída dos dados. Se os controles gerais forem fracos, o auditor não pode confiar muito nos controles de aplicação, porque alguém poderia, por exemplo, alterar o programa sem passar pela gestão de mudanças.</p><p>Quando o auditor acha um controle fraco, antes de relatar ele procura um controle compensatório, compensating control, que reduza o mesmo risco por outro caminho. Por exemplo, um relatório de erros mal feito pode ser compensado por uma conciliação manual de todas as transações. Já os controles sobrepostos, overlapping controls, são dois controles fortes cobrindo o mesmo risco, como um crachá na porta e um vigilante conferindo o crachá.</p><p>E o risco. Na auditoria, o conceito central é o risco de auditoria, audit risk: a chance de o auditor chegar a uma conclusão errada, deixando passar um erro relevante. Ele tem três componentes. O risco inerente, inherent risk, é o risco do próprio processo, sem considerar controle nenhum. O risco de controle, control risk, é a chance de os controles internos não evitarem nem detectarem o erro a tempo. E o risco de detecção, detection risk, é a chance de os testes do auditor não encontrarem o erro. Dos três, o auditor só controla o risco de detecção, ajustando quanto e como testa. Se o risco inerente e o de controle forem altos, o auditor reduz o risco de detecção testando mais.</p><p>Junto com o risco vem a materialidade, materiality: o tamanho a partir do qual um erro ou uma fraqueza importa para a decisão de quem lê o relatório. Em sistemas, a materialidade nem sempre é um valor em dinheiro; uma falha de acesso num sistema pequeno pode ser material se expuser dados de clientes.</p><p>Vamos fixar com três perguntas. Tente responder antes de ouvir a resposta.</p><p>Pergunta um: quem deve aprovar a carta de auditoria? Pense. O conselho de administração e o comitê de auditoria, o nível mais alto da organização.</p><p>Pergunta dois: uma revisão semanal dos logs de acesso é um controle de que tipo? Pense. É um controle detectivo, porque percebe o acesso indevido depois que ele aconteceu.</p><p>Pergunta três: dos três componentes do risco de auditoria, qual o auditor consegue controlar? Pense. O risco de detecção, ajustando a natureza, a época e a extensão dos testes.</p><p>Na próxima seção começamos o domínio mais pesado da prova, executar uma auditoria, pelo planejamento baseado em risco.</p></div></div>
+</div>
+<div class="card pendente" id="card-2">
+  <div class="card-header">
+    <div class="ep-num">2</div>
+    <div class="card-meta">
+      <h2>Executar a auditoria I: planejamento baseado em risco</h2>
+      <div class="topics">Universo de auditoria · avaliação de riscos · objetivos e escopo · programa de auditoria</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">Performing an Audit 35%</span></div>
+</div>
+<div class="card pendente" id="card-3">
+  <div class="card-header">
+    <div class="ep-num">3</div>
+    <div class="card-meta">
+      <h2>Executar a auditoria II: evidência, testes e amostragem</h2>
+      <div class="topics">Tipos de evidência · testes de controle e substantivos · amostragem estatística e não estatística</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">Performing an Audit 35%</span></div>
+</div>
+<div class="card pendente" id="card-4">
+  <div class="card-header">
+    <div class="ep-num">4</div>
+    <div class="card-meta">
+      <h2>Executar a auditoria III: análise de dados e papéis de trabalho</h2>
+      <div class="topics">Técnicas de auditoria assistidas por computador · auditoria contínua · papéis de trabalho · fraude</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">Performing an Audit 35%</span></div>
+</div>
+<div class="card pendente" id="card-5">
+  <div class="card-header">
+    <div class="ep-num">5</div>
+    <div class="card-meta">
+      <h2>Executar a auditoria IV: achados, relatório e acompanhamento</h2>
+      <div class="topics">Achados · estrutura do relatório · comunicação · acompanhamento · qualidade da auditoria</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">Performing an Audit 35%</span></div>
+</div>
+<div class="card pendente" id="card-6">
+  <div class="card-header">
+    <div class="ep-num">6</div>
+    <div class="card-meta">
+      <h2>Ambiente de TI I: infraestrutura, redes e sistemas operacionais</h2>
+      <div class="topics">Hardware · redes · sistemas operacionais · virtualização</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">IT Environment and Components 25%</span></div>
+</div>
+<div class="card pendente" id="card-7">
+  <div class="card-header">
+    <div class="ep-num">7</div>
+    <div class="card-meta">
+      <h2>Ambiente de TI II: aplicações, bancos de dados e desenvolvimento</h2>
+      <div class="topics">Aplicações · bancos de dados · ciclo de desenvolvimento · interfaces</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">IT Environment and Components 25%</span></div>
+</div>
+<div class="card pendente" id="card-8">
+  <div class="card-header">
+    <div class="ep-num">8</div>
+    <div class="card-meta">
+      <h2>Ambiente de TI III: operações, serviços e nuvem</h2>
+      <div class="topics">Operações de TI · gestão de serviços · continuidade · nuvem</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">IT Environment and Components 25%</span></div>
+</div>
+<div class="card pendente" id="card-9">
+  <div class="card-header">
+    <div class="ep-num">9</div>
+    <div class="card-meta">
+      <h2>Temas específicos de auditoria</h2>
+      <div class="topics">Acesso lógico · gestão de mudanças · terceiros · incidentes · segurança</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">Specific Audit Subjects 15%</span></div>
+</div>
+<div class="card pendente" id="card-10">
+  <div class="card-header">
+    <div class="ep-num">10</div>
+    <div class="card-meta">
+      <h2>Tecnologias novas</h2>
+      <div class="topics">Inteligência artificial · DevOps · Internet das Coisas · blockchain</div>
+    </div>
+    <div class="duration">em produção</div>
+  </div>
+  <div class="tags"><span class="tag slate">Overview of Newer Technologies 12%</span></div>
+</div>
+
+<div class="section-head"><h2>Perguntas e respostas</h2><p>Em produção: cerca de 1 hora em capítulos de ~8 minutos, no formato pergunta → silêncio para você responder → resposta.</p></div>
+<div class="section-head"><h2>Simulado diagnóstico</h2><p>Em produção: 20 questões de múltipla escolha com nota por domínio.</p></div>
+
+<footer>Curso aberto de estudo · <a href="https://github.com/rpagliuca/curso-aberto-audiobook-portugues-isaca-it-audit-fundamentals" style="color:#475569">código-fonte e roteiros no GitHub</a><br>Material independente, sem vínculo com a ISACA. IT Audit Fundamentals é marca da ISACA.</footer>
+
+<div id="nowbar">
+  <div class="nb-title" id="nb-title">Toque em ▶ para começar</div>
+  <div class="nb-btns">
+    <button onclick="prevEpisode()" aria-label="Seção anterior">⏮</button>
+    <button onclick="seekBy(-10)" aria-label="Voltar 10 segundos">−10</button>
+    <button class="main" id="nb-pp" onclick="toggle()" aria-label="Tocar ou pausar">▶</button>
+    <button onclick="seekBy(10)" aria-label="Avançar 10 segundos">+10</button>
+    <button onclick="nextEpisode()" aria-label="Próxima seção">⏭</button>
+  </div>
+</div>
+<audio id="engine" preload="metadata"></audio>
+<script>
+const engine = document.getElementById('engine');
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : v; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+};
+const posKey = n => 'isaca_itaf_audio-' + n;           
+const parseDur = t => { const m = /(\d+):(\d+)/.exec(t || ''); return m ? +m[1] * 60 + +m[2] : 0; };
+const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+
+const EPS = [...document.querySelectorAll('.player')].map(el => {
+  const card = el.closest('.card');
+  return { n: +el.dataset.ep, label: el.dataset.label || ('Ep. ' + el.dataset.ep), src: el.dataset.src, el, card,
+           title: card.querySelector('h2').textContent.trim(),
+           dur: parseDur(card.querySelector('.duration').textContent),
+           btn: el.querySelector('.pp'), seek: el.querySelector('.seek'), time: el.querySelector('.time') };
+});
+let cur = -1, pendingSeek = 0, pendingFromEnd = 0, lastSave = 0, scrubbing = false;
+const STEP = 10;   // segundos por toque nos botões avançar/voltar do carro ou do fone
+
+const durOf = i => (i === cur && isFinite(engine.duration) && engine.duration > 0) ? engine.duration : EPS[i].dur;
+const getPos = i => parseFloat(LS.get(posKey(EPS[i].n), '0')) || 0;
+function savePos() { if (cur >= 0 && engine.currentTime > 0 && !pendingSeek && !pendingFromEnd && !engine.ended) LS.set(posKey(EPS[cur].n), engine.currentTime.toFixed(1)); }
+
+function load(i, autoplay, at) {
+  if (i < 0 || i >= EPS.length) return;
+  if (i !== cur) {
+    savePos();
+    cur = i;
+    pendingSeek = 0; pendingFromEnd = 0;
+    if (at === undefined) { const sv = getPos(i); if (sv > 5 && sv < EPS[i].dur - 3) pendingSeek = sv; }
+    else if (at < 0) pendingFromEnd = -at;   // negativo = contado a partir do FIM (duração real só vem com o metadata)
+    else pendingSeek = at;
+    engine.src = EPS[i].src;
+    LS.set('isaca_itaf_last', String(EPS[i].n));
+    updateMeta();
+  } else if (at !== undefined) { seekTo(at); }
+  if (autoplay) { const p = engine.play(); if (p && p.catch) p.catch(() => {}); }
+  refreshUI();
+}
+function applyPendingSeek(final) {
+  if (isFinite(engine.duration) && engine.duration > 0) {
+    if (pendingFromEnd > 0) { pendingSeek = Math.max(0, engine.duration - pendingFromEnd); pendingFromEnd = 0; }
+    const t = Math.min(pendingSeek, engine.duration - 0.5);
+    if (t > 0 && Math.abs(engine.currentTime - t) > 1.5) engine.currentTime = t;
+  }
+  if (final) { pendingSeek = 0; pendingFromEnd = 0; }
+}
+function seekTo(t) {
+  if (cur < 0) return;
+  t = Math.max(0, Math.min(durOf(cur) - 0.5, t));
+  if (engine.readyState >= 1) engine.currentTime = t; else pendingSeek = t;
+  refreshUI(); updatePositionState();
+}
+// Os capítulos se comportam como UMA faixa contínua: voltar no começo de um capítulo cai no fim do
+// anterior; avançar no fim cai no começo do próximo. Mantém tocando se estava tocando.
+function seekBy(secs) {
+  if (cur < 0) load(lastEp(), false);
+  if (pendingFromEnd > 0) { pendingFromEnd = Math.max(0.5, pendingFromEnd - secs); refreshUI(); return; }  // toques em rajada durante a troca
+  const playing = !engine.paused, t = (pendingSeek || engine.currentTime) + secs, d = durOf(cur);
+  if (t < 0 && cur > 0) return load(cur - 1, playing, Math.min(t, -0.5));
+  if (d && t >= d - 0.3 && cur < EPS.length - 1) return load(cur + 1, playing, Math.max(0, t - d));
+  seekTo(t);
+}
+function toggle(i) {
+  if (i === undefined) i = cur < 0 ? lastEp() : cur;
+  if (i !== cur) return load(i, true);
+  if (engine.paused) { const p = engine.play(); if (p && p.catch) p.catch(() => {}); } else engine.pause();
+}
+function lastEp() { const n = +LS.get('isaca_itaf_last', '1'); const i = EPS.findIndex(e => e.n === n); return i < 0 ? 0 : i; }
+
+// Botões −30/−5/+5/+30 dos cards (assinatura antiga preservada: skip('audio-3', -30))
+function skip(id, secs) {
+  const i = EPS.findIndex(e => e.n === +String(id).replace(/\D/g, ''));
+  if (i < 0) return;
+  if (i !== cur) load(i, false);
+  seekBy(secs);
+}
+
+// ─── Botões do carro / fone ─────────────────────────────────────────────────
+function nextEpisode() { if (cur < 0) return load(lastEp(), true); if (cur < EPS.length - 1) load(cur + 1, true); }
+function prevEpisode() {
+  if (cur < 0) return load(lastEp(), true);
+  // padrão de player: passou de 5 s, "voltar" reinicia o episódio; no comecinho, vai para o anterior
+  if (engine.currentTime > 5 || cur === 0) seekTo(0); else load(cur - 1, true, 0);
+  if (engine.paused) toggle(cur);
+}
+const ACTIONS = {
+  play:          () => { if (cur < 0) load(lastEp(), true); else if (engine.paused) toggle(cur); },
+  pause:         () => engine.pause(),
+  stop:          () => engine.pause(),
+  nexttrack:     () => seekBy(STEP),      // carro: ⏭ avança 10 s
+  previoustrack: () => seekBy(-STEP),     // carro: ⏮ volta 10 s
+  seekforward:   d => seekBy((d && d.seekOffset) || STEP),
+  seekbackward:  d => seekBy(-((d && d.seekOffset) || STEP)),
+  seekto:        d => { if (d && typeof d.seekTime === 'number') seekTo(d.seekTime); }
+};
+if ('mediaSession' in navigator) {
+  for (const [name, fn] of Object.entries(ACTIONS)) {
+    try { navigator.mediaSession.setActionHandler(name, fn); } catch (e) { /* ação não suportada neste navegador */ }
+  }
+}
+function updateMeta() {
+  if (!('mediaSession' in navigator) || cur < 0 || !window.MediaMetadata) return;
+  const e = EPS[cur];
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: e.label + ' — ' + e.title, artist: 'ISACA IT Audit Fundamentals', album: 'Curso aberto em áudio',
+    artwork: [{ src: 'artwork-192.png', sizes: '192x192', type: 'image/png' },
+              { src: 'artwork.png', sizes: '512x512', type: 'image/png' }]
+  });
+}
+function updatePositionState() {
+  if (!('mediaSession' in navigator) || !navigator.mediaSession.setPositionState) return;
+  if (!isFinite(engine.duration) || engine.duration <= 0) return;
+  try {
+    navigator.mediaSession.setPositionState({ duration: engine.duration, playbackRate: engine.playbackRate || 1,
+      position: Math.min(engine.currentTime, engine.duration) });
+  } catch (e) {}
+}
+
+// ─── UI ─────────────────────────────────────────────────────────────────────
+function refreshUI() {
+  EPS.forEach((e, i) => {
+    const active = i === cur, d = durOf(i);
+    const t = active ? (pendingSeek || engine.currentTime) : getPos(i);
+    e.card.classList.toggle('current', active);
+    e.btn.textContent = (active && !engine.paused) ? '⏸' : '▶';
+    if (!(active && scrubbing)) e.seek.value = d ? Math.round(t / d * 1000) : 0;
+    e.time.textContent = fmt(t) + ' / ' + fmt(d);
+  });
+  document.getElementById('nb-pp').textContent = (cur >= 0 && !engine.paused) ? '⏸' : '▶';
+  document.getElementById('nb-title').textContent = cur >= 0 ? EPS[cur].label + ' — ' + EPS[cur].title : 'Toque em ▶ para começar';
+}
+EPS.forEach((e, i) => {
+  e.btn.addEventListener('click', () => toggle(i));
+  e.seek.addEventListener('input', () => { scrubbing = true; e.time.textContent = fmt(e.seek.value / 1000 * durOf(i)) + ' / ' + fmt(durOf(i)); });
+  e.seek.addEventListener('change', () => { scrubbing = false; const t = e.seek.value / 1000 * durOf(i); if (i !== cur) load(i, false, t); else seekTo(t); });
+});
+
+engine.addEventListener('loadedmetadata', () => { applyPendingSeek(false); updatePositionState(); refreshUI(); });
+engine.addEventListener('canplay', () => { applyPendingSeek(true); updatePositionState(); });
+engine.addEventListener('timeupdate', () => {
+  refreshUI();
+  const now = Date.now();
+  if (now - lastSave > 2000) { lastSave = now; savePos(); updatePositionState(); }
+});
+['play', 'playing', 'pause', 'seeked', 'ratechange'].forEach(ev => engine.addEventListener(ev, () => {
+  if ('mediaSession' in navigator) navigator.mediaSession.playbackState = engine.paused ? 'paused' : 'playing';
+  if (ev === 'pause') savePos();
+  updatePositionState(); refreshUI();
+}));
+engine.addEventListener('ended', () => {
+  LS.set(posKey(EPS[cur].n), '0');                       // episódio concluído: da próxima vez começa do zero
+  if (cur < EPS.length - 1) load(cur + 1, true); else refreshUI();   // emenda no próximo (essencial dirigindo)
+});
+window.addEventListener('pagehide', savePos);
+document.addEventListener('visibilitychange', () => { if (document.hidden) savePos(); });
+
+load(lastEp(), false);   // deixa o último episódio pronto para "continuar de onde parei"
+
+
+// ─── Toggle panels ─────────────────────────────────────────────────────────
+function togglePanel(id, btn) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('open');
+  // close siblings in same card
+  const card = btn.closest('.card');
+  card.querySelectorAll('.panel').forEach(p => p.classList.remove('open'));
+  card.querySelectorAll('.btn-toggle').forEach(b => b.classList.remove('active'));
+  if (!isOpen) {
+    panel.classList.add('open');
+    btn.classList.add('active');
+    // render quiz lazily
+    const qid = id.replace('quiz-', '');
+    if (id.startsWith('quiz-') && !panel.dataset.rendered) {
+      renderQuiz(qid);
+      panel.dataset.rendered = '1';
+    }
+  }
+}
+
+
+// ─── Quiz data (gerado por gerar_site.py) ──────────────────────────────────
+const QUIZZES = {"1": [{"q": "Quem aprova a carta de auditoria (audit charter)?", "opts": ["O conselho de administração e o comitê de auditoria", "O diretor de TI", "O auditor responsável por cada trabalho", "O órgão regulador do setor"], "a": 0, "exp": "A carta define autoridade e responsabilidade da função de auditoria; por isso vem do nível mais alto, que garante a independência."}, {"q": "Qual é a diferença entre carta de auditoria e carta de contratação (engagement letter)?", "opts": ["São o mesmo documento com nomes diferentes", "A carta de auditoria cobre toda a função; a de contratação, um trabalho específico", "A carta de contratação é aprovada pelo conselho; a de auditoria, pelo auditor", "A carta de auditoria só existe em auditoria externa"], "a": 1, "exp": "A carta de contratação detalha objetivo e escopo de um trabalho; a carta de auditoria é o mandato permanente."}, {"q": "Uma revisão semanal dos logs de acesso é um controle:", "opts": ["Preventivo", "Detectivo", "Corretivo", "Dissuasivo"], "a": 1, "exp": "Ela percebe o acesso indevido depois que ele ocorreu."}, {"q": "Backup e plano de recuperação de desastres são controles:", "opts": ["Preventivos", "Detectivos", "Corretivos", "Compensatórios por definição"], "a": 2, "exp": "Reduzem o impacto e restauram a operação depois do evento."}, {"q": "Dos componentes do risco de auditoria, qual o auditor controla diretamente?", "opts": ["Risco inerente", "Risco de controle", "Risco de detecção", "Nenhum deles"], "a": 2, "exp": "O auditor ajusta natureza, época e extensão dos testes para reduzir o risco de detecção."}, {"q": "Antes de relatar um controle fraco, o auditor deve procurar:", "opts": ["Um controle sobreposto", "Um controle compensatório", "A aprovação do auditado", "Um novo objetivo de controle"], "a": 1, "exp": "Um controle compensatório pode reduzir o mesmo risco por outro caminho, e isso muda a gravidade do achado."}]};
+
+// ─── Quiz renderer ──────────────────────────────────────────────────────────
+function renderQuiz(epId) {
+  const questions = QUIZZES[epId];
+  const container = document.getElementById('quiz-' + epId + '-body');
+  const letters = ['A', 'B', 'C', 'D'];
+  let state = { current: 0, score: 0, answered: new Array(questions.length).fill(false) };
+
+  function render() {
+    container.innerHTML = '';
+
+    // Header
+    const hdr = document.createElement('div');
+    hdr.className = 'quiz-header';
+    hdr.innerHTML = `<div class="quiz-title">Questões de fixação</div>
+      <div class="quiz-progress">${state.current + 1} / ${questions.length}</div>`;
+    container.appendChild(hdr);
+
+    const q = questions[state.current];
+
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block active';
+
+    const qText = document.createElement('div');
+    qText.className = 'question-text';
+    qText.textContent = q.q;
+    qBlock.appendChild(qText);
+
+    const opts = document.createElement('div');
+    opts.className = 'options';
+    q.opts.forEach((opt, i) => {
+      const o = document.createElement('div');
+      o.className = 'option';
+      o.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${opt}</span>`;
+      o.addEventListener('click', () => {
+        if (state.answered[state.current]) return;
+        state.answered[state.current] = true;
+
+        opts.querySelectorAll('.option').forEach(el => el.classList.add('disabled'));
+        o.classList.add(i === q.a ? 'correct' : 'wrong');
+        if (i !== q.a) {
+          opts.querySelectorAll('.option')[q.a].classList.add('correct');
+        } else {
+          state.score++;
+        }
+
+        // explanation
+        const exp = document.createElement('div');
+        exp.className = 'explanation';
+        exp.innerHTML = q.exp;
+        qBlock.appendChild(exp);
+
+        // nav
+        const nav = document.createElement('div');
+        nav.className = 'quiz-nav';
+        const btnNext = document.createElement('button');
+        btnNext.className = 'btn-next';
+        btnNext.style.display = 'block';
+
+        if (state.current < questions.length - 1) {
+          btnNext.textContent = 'Próxima →';
+          btnNext.onclick = () => { state.current++; render(); };
+        } else {
+          btnNext.textContent = 'Ver resultado';
+          btnNext.onclick = () => showResult();
+        }
+        nav.appendChild(btnNext);
+        qBlock.appendChild(nav);
+      });
+      opts.appendChild(o);
+    });
+    qBlock.appendChild(opts);
+    container.appendChild(qBlock);
+  }
+
+  function showResult() {
+    const pct = Math.round(state.score / questions.length * 100);
+    const pass = pct >= 70;
+    container.innerHTML = `
+      <div class="quiz-result ${pass ? 'pass' : 'fail'}">
+        <span class="score-big">${state.score}/${questions.length} — ${pct}%</span>
+        ${pass ? '✓ Bom domínio do conteúdo!' : '✗ Revise o episódio e tente novamente.'}
+      </div>
+      <div style="text-align:center">
+        <button class="btn-retry" onclick="resetQuiz('${epId}')">↺ Refazer quiz</button>
+      </div>`;
+  }
+
+  render();
+}
+
+function resetQuiz(epId) {
+  const panel = document.getElementById('quiz-' + epId);
+  panel.removeAttribute('data-rendered');
+  renderQuiz(epId);
+}
+</script>
+</body>
+</html>

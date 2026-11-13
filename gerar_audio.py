@@ -49,15 +49,18 @@ async def tts(texto: str) -> bytes:
     caminho = os.path.join(CACHE, chave + ".mp3")
     if not os.path.exists(caminho):
         os.makedirs(CACHE, exist_ok=True)
-        for tentativa in range(4):
+        # o serviço falha de forma intermitente (NoAudioReceived para o mesmo texto que
+        # funciona segundos depois): tentar de novo com espera crescente
+        for tentativa in range(8):
             try:
                 await edge_tts.Communicate(texto, VOZ, rate=RATE).save(caminho + ".tmp")
                 os.replace(caminho + ".tmp", caminho)
                 break
-            except Exception:
-                if tentativa == 3:
+            except Exception as erro:
+                if tentativa == 7:
                     raise
-                await asyncio.sleep(3)
+                print(f"  tentativa {tentativa + 1} falhou ({type(erro).__name__}), nova em {2 ** tentativa} s")
+                await asyncio.sleep(2 ** tentativa)
     pcm = subprocess.run(
         ["ffmpeg", "-v", "error", "-i", caminho, "-f", "s16le", "-ac", "1", "-ar", str(TAXA), "-"],
         check=True, capture_output=True,

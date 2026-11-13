@@ -6,17 +6,14 @@ longas antes das palavras soltas.
 """
 import re
 
-# Siglas que devem ser soletradas.
-SIGLAS = [
-    (r"\bIIA\b", "I.I.A."),
-    (r"\bTI\b", "T.I."),
-    (r"\bSLA\b", "S.L.A."),
-    (r"\bCAAT\b", "C.A.A.T."),
-]
+# Regra do Rafael (2026-11-13): toda sigla vai com pontos (TI → T.I.), sem exceção.
+# Qualquer palavra de 2+ letras maiúsculas que sobrar depois do mapa fonético é soletrada.
+# Algarismos romanos (II, III, IV...) ficam de fora.
+ROMANOS = re.compile(r"^[IVXLC]+$")
 
 # Termos em inglês reescritos foneticamente (case-insensitive).
 FONETICA = [
-    (r"\bIT Audit Fundamentals\b", "ái-tí ódit fândamêntous"),
+    (r"\bIT Audit Fundamentals\b", "ái-tí audíti fândamêntous"),
     (r"\bIT general controls\b", "ái-tí djênerau contrôuls"),
     (r"\btools and techniques\b", "túls ênd tekníks"),
     (r"\breasonable assurance\b", "rízonabol achúrans"),
@@ -29,8 +26,8 @@ FONETICA = [
     (r"\bdetection risk\b", "ditékchon rísk"),
     (r"\binherent risk\b", "inírent rísk"),
     (r"\bcontrol risk\b", "contrôul rísk"),
-    (r"\baudit charter\b", "ódit tchárter"),
-    (r"\baudit risk\b", "ódit rísk"),
+    (r"\baudit charter\b", "audíti chárter"),
+    (r"\baudit risk\b", "audíti rísk"),
     (r"\bmateriality\b", "matiriáliti"),
     (r"\bperformance\b", "perfórmans"),
     (r"\bguidelines\b", "gáid-láins"),
@@ -45,14 +42,14 @@ FONETICA = [
     (r"\bdeterrent\b", "ditérrent"),
     (r"\bbackup\b", "bêcápi"),
     (r"\blogs\b", "lógues"),
-    (r"\bITAF\b", "ítaf"),
-    (r"\bISACA\b", "ísaca"),
 ]
 
 
 def para_fala(texto: str) -> str:
     for padrao, troca in FONETICA:
         texto = re.sub(padrao, troca, texto, flags=re.IGNORECASE)
-    for padrao, troca in SIGLAS:
-        texto = re.sub(padrao, troca, texto)
-    return texto
+    def soletrar(m):
+        s = m.group(0)
+        return s if ROMANOS.match(s) else ".".join(s) + "."
+    texto = re.sub(r"\b[A-ZÁÉÍÓÚÂÊÔÃÕÇ]{2,}\b", soletrar, texto)
+    return re.sub(r"(?<=[A-Z])\.\.", ".", texto)
