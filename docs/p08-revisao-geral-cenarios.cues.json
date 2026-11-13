@@ -1,0 +1,188 @@
+{
+ "slug": "p08-revisao-geral-cenarios",
+ "duracao": 548.0,
+ "cues": [
+  {
+   "id": "c-plano-incidente",
+   "revisao": false,
+   "t_pergunta": 13.72,
+   "pausa": 9.3,
+   "t_resposta": 30.67
+  },
+  {
+   "id": "c-primeiro",
+   "revisao": false,
+   "t_pergunta": 36.81,
+   "pausa": 7.6,
+   "t_resposta": 49.6
+  },
+  {
+   "id": "c-gestor-pede",
+   "revisao": false,
+   "t_pergunta": 54.54,
+   "pausa": 10.0,
+   "t_resposta": 71.76
+  },
+  {
+   "id": "c-auditor-corrige",
+   "revisao": false,
+   "t_pergunta": 79.29,
+   "pausa": 8.5,
+   "t_resposta": 94.69
+  },
+  {
+   "id": "c-primeiro",
+   "revisao": true,
+   "t_pergunta": 100.25,
+   "pausa": 6.1,
+   "t_resposta": 111.55
+  },
+  {
+   "id": "c-evid-verbal",
+   "revisao": false,
+   "t_pergunta": 116.48,
+   "pausa": 10.0,
+   "t_resposta": 132.45
+  },
+  {
+   "id": "c-amostra-fraude",
+   "revisao": false,
+   "t_pergunta": 139.38,
+   "pausa": 6.2,
+   "t_resposta": 151.33
+  },
+  {
+   "id": "c-caat",
+   "revisao": false,
+   "t_pergunta": 155.28,
+   "pausa": 8.8,
+   "t_resposta": 169.92
+  },
+  {
+   "id": "c-fraude-chefe",
+   "revisao": false,
+   "t_pergunta": 175.67,
+   "pausa": 9.7,
+   "t_resposta": 190.96
+  },
+  {
+   "id": "c-auditor-corrige",
+   "revisao": true,
+   "t_pergunta": 197.38,
+   "pausa": 7.0,
+   "t_resposta": 211.28
+  },
+  {
+   "id": "c-contas-ex",
+   "revisao": false,
+   "t_pergunta": 216.84,
+   "pausa": 8.0,
+   "t_resposta": 230.36
+  },
+  {
+   "id": "c-regra-firewall",
+   "revisao": false,
+   "t_pergunta": 241.12,
+   "pausa": 10.0,
+   "t_resposta": 257.69
+  },
+  {
+   "id": "c-dev-producao",
+   "revisao": false,
+   "t_pergunta": 264.55,
+   "pausa": 8.3,
+   "t_resposta": 279.04
+  },
+  {
+   "id": "c-evid-verbal",
+   "revisao": true,
+   "t_pergunta": 284.43,
+   "pausa": 8.9,
+   "t_resposta": 299.31
+  },
+  {
+   "id": "c-rpo",
+   "revisao": false,
+   "t_pergunta": 306.24,
+   "pausa": 6.7,
+   "t_resposta": 319.75
+  },
+  {
+   "id": "c-saas",
+   "revisao": false,
+   "t_pergunta": 324.02,
+   "pausa": 7.6,
+   "t_resposta": 338.57
+  },
+  {
+   "id": "c-soc1",
+   "revisao": false,
+   "t_pergunta": 343.46,
+   "pausa": 7.0,
+   "t_resposta": 356.37
+  },
+  {
+   "id": "c-revisao-massa",
+   "revisao": false,
+   "t_pergunta": 360.88,
+   "pausa": 7.5,
+   "t_resposta": 374.62
+  },
+  {
+   "id": "c-rpo",
+   "revisao": true,
+   "t_pergunta": 379.46,
+   "pausa": 5.5,
+   "t_resposta": 391.79
+  },
+  {
+   "id": "c-robo",
+   "revisao": false,
+   "t_pergunta": 396.06,
+   "pausa": 9.6,
+   "t_resposta": 412.17
+  },
+  {
+   "id": "c-ia-dados",
+   "revisao": false,
+   "t_pergunta": 418.54,
+   "pausa": 7.5,
+   "t_resposta": 433.01
+  },
+  {
+   "id": "c-cicd",
+   "revisao": false,
+   "t_pergunta": 437.85,
+   "pausa": 9.6,
+   "t_resposta": 454.4
+  },
+  {
+   "id": "c-revisao-massa",
+   "revisao": true,
+   "t_pergunta": 460.72,
+   "pausa": 6.0,
+   "t_resposta": 472.97
+  },
+  {
+   "id": "c-iot",
+   "revisao": false,
+   "t_pergunta": 477.81,
+   "pausa": 8.1,
+   "t_resposta": 492.28
+  },
+  {
+   "id": "c-escopo-final",
+   "revisao": false,
+   "t_pergunta": 497.55,
+   "pausa": 8.4,
+   "t_resposta": 512.61
+  },
+  {
+   "id": "c-dev-producao",
+   "revisao": true,
+   "t_pergunta": 518.1,
+   "pausa": 6.8,
+   "t_resposta": 531.09
+  }
+ ]
+}

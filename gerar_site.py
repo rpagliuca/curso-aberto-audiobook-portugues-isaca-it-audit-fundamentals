@@ -2,7 +2,9 @@
 """Gera docs/index.html a partir de site/template.html, do plano abaixo e dos roteiros.
 
 Seção com roteiro e MP3 vira card completo (player, resumo, quiz, transcrição);
-seção ainda sem áudio aparece como card "em produção". Uso: python gerar_site.py
+seção ainda sem áudio aparece como card "em produção". Também gera os cards de perguntas e
+respostas (perguntas/ + docs/*.cues.json), docs/simulado.html (simulado/simulado.md) e
+docs/leitura.html (guia/guia-de-leitura.md). Uso: python gerar_site.py
 """
 import html
 import json
@@ -134,6 +136,124 @@ def card(n, slug, titulo, dominio, topicos, quizzes) -> tuple[str, float]:
     return corpo, d
 
 
+def cards_perguntas() -> tuple[str, float, int]:
+    from gerar_perguntas import parse
+    e, cards, total, n_perg = html.escape, [], 0.0, 0
+    pasta = os.path.join(RAIZ, "perguntas")
+    for f in sorted(x for x in os.listdir(pasta) if re.match(r"p\d+.*\.md$", x)):
+        slug = f[:-3]
+        cj = os.path.join(DOCS, slug + ".cues.json")
+        if not os.path.exists(cj):
+            continue
+        ch = parse(os.path.join(pasta, f))
+        d = json.load(open(cj, encoding="utf-8"))["duracao"]
+        num = int(re.match(r"p(\d+)", slug).group(1))
+        n = 100 + num
+        novas = sum(1 for i in ch["itens"] if not i["revisao"])
+        rev = len(ch["itens"]) - novas
+        vistos, lis = set(), []
+        for it in ch["itens"]:
+            if it["id"] in vistos:
+                continue
+            vistos.add(it["id"])
+            lis.append(f'<li><details><summary>{e(it["P"])}</summary><p><strong>{e(it["R"])}</strong> {e(it.get("E", ""))}</p></details></li>')
+        m = ch["meta"]
+        titulo = re.sub(r"^P\d+\s*[—-]\s*", "", ch["titulo"])
+        classe = "purple" if m.get("tipo") == "misto" else ""
+        cards.append(f'''<div class="card" id="card-{n}">
+  <div class="card-header">
+    <div class="ep-num qa">P{num}</div>
+    <div class="card-meta">
+      <h2>{e(titulo)}</h2>
+      <div class="topics">{e(m.get("topicos", ""))}</div>
+    </div>
+    <div class="duration">{mmss(d)}</div>
+  </div>
+  <div class="player" data-ep="{n}" data-label="P{num}" data-src="{slug}.mp3">
+    <button class="pp" aria-label="Tocar ou pausar P{num}">▶</button>
+    <input class="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Posição em P{num}">
+    <span class="time">0:00</span>
+  </div>
+  <div class="skip-row">
+    <button class="btn-skip" onclick="skip('audio-{n}',-30)">−30s</button>
+    <button class="btn-skip" onclick="skip('audio-{n}',-5)">−5s</button>
+    <button class="btn-skip" onclick="skip('audio-{n}',+5)">+5s</button>
+    <button class="btn-skip" onclick="skip('audio-{n}',+30)">+30s</button>
+  </div>
+  <div class="tags">
+    <span class="tag {classe}">{e(m.get("dominio", ""))}</span>
+    <span class="tag green">{novas} perguntas</span>
+    <span class="tag amber">{rev} revisões espaçadas</span>
+  </div>
+  <div class="actions">
+    <button class="btn-toggle" onclick="togglePanel('resumo-{n}',this)">📄 Transcrição: perguntas e respostas</button>
+  </div>
+  <div class="panel" id="resumo-{n}"><div class="panel-inner"><div class="resumo-title">Toque na pergunta para ver a resposta</div><ul class="resumo-list qa-list">{"".join(lis)}</ul></div></div>
+</div>
+''')
+        total += d
+        n_perg += novas
+    return "".join(cards), total, n_perg
+
+
+def simulado() -> int:
+    fonte = os.path.join(RAIZ, "simulado", "simulado.md")
+    if not os.path.exists(fonte):
+        return 0
+    dominios, qs = {}, []
+    for bloco in re.split(r"^## ", open(fonte, encoding="utf-8").read(), flags=re.M)[1:]:
+        cab, _, resto = bloco.partition("\n")
+        cod, _, nome = cab.strip().partition(" ")
+        dominios[cod] = nome
+        for q in quiz(resto):
+            qs.append({"d": cod, "q": q["q"], "o": q["opts"], "a": q["a"], "e": html.unescape(re.sub(r"<[^>]+>", "", q["exp"]))})
+    js = "const D=" + json.dumps(dominios, ensure_ascii=False) + ";\nconst Q=" + json.dumps(qs, ensure_ascii=False, indent=0) + ";"
+    tpl = open(os.path.join(RAIZ, "site", "simulado-template.html"), encoding="utf-8").read()
+    open(os.path.join(DOCS, "simulado.html"), "w", encoding="utf-8").write(tpl.replace("/*SIMULADO*/", js))
+    return len(qs)
+
+
+def md_simples(texto: str) -> str:
+    """Markdown mínimo do guia: #, ##, ###, parágrafos, listas "- " e tabelas "| a | b |"."""
+    out, lista, tabela = [], False, []
+    def fecha():
+        nonlocal lista, tabela
+        if lista:
+            out.append("</ul>"); lista = False
+        if tabela:
+            linhas = [l for l in tabela if not re.match(r"^\|[\s:|-]+\|$", l)]
+            cel = lambda l: [c.strip() for c in l.strip("|").split("|")]
+            h = "".join(f"<th>{inline(c)}</th>" for c in cel(linhas[0]))
+            corpo = "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in cel(l)) + "</tr>" for l in linhas[1:])
+            out.append(f"<table><thead><tr>{h}</tr></thead><tbody>{corpo}</tbody></table>"); tabela = []
+    for l in texto.splitlines():
+        if l.startswith("|"):
+            if lista: out.append("</ul>"); lista = False
+            tabela.append(l); continue
+        if l.startswith("- "):
+            if tabela: fecha()
+            if not lista: out.append("<ul>"); lista = True
+            out.append(f"<li>{inline(l[2:])}</li>"); continue
+        fecha()
+        m = re.match(r"^(#{1,3}) (.+)$", l)
+        if m:
+            k = len(m.group(1)); out.append(f"<h{k}>{inline(m.group(2))}</h{k}>")
+        elif l.strip():
+            out.append(f"<p>{inline(l)}</p>")
+    fecha()
+    return "\n".join(out)
+
+
+def leitura() -> bool:
+    fonte = os.path.join(RAIZ, "guia", "guia-de-leitura.md")
+    if not os.path.exists(fonte):
+        return False
+    tpl = open(os.path.join(RAIZ, "site", "leitura-template.html"), encoding="utf-8").read()
+    open(os.path.join(DOCS, "leitura.html"), "w", encoding="utf-8").write(
+        tpl.replace("<!--CORPO-->", md_simples(open(fonte, encoding="utf-8").read())))
+    return True
+
+
 def main() -> None:
     quizzes, cards, total, prontas = {}, [], 0.0, 0
     for item in PLANO:
@@ -141,22 +261,33 @@ def main() -> None:
         cards.append(c)
         total += d
         prontas += d > 0
+    qa, total_qa, n_perg = cards_perguntas()
+    n_sim = simulado()
+    tem_leitura = leitura()
+    extra = ""
+    if n_sim:
+        extra += '<a class="link-extra" href="simulado.html">🎯 Simulado diagnóstico · {} questões →</a>'.format(n_sim)
+    if tem_leitura:
+        extra += '<a class="link-extra" href="leitura.html">📖 Guia de leitura →</a>'
     corpo = f'''<header>
   <h1>ISACA IT Audit Fundamentals</h1>
   <p>Curso aberto em áudio, em português · para ouvir no carro, na caminhada, na academia</p>
   <div class="badges">
     <span class="badge">{prontas} de {len(PLANO)} seções · {mmss(total)}</span>
+    <span class="badge">{n_perg} perguntas em áudio · {mmss(total_qa)}</span>
     <span class="badge green">Quiz e resumo por seção</span>
-    <span class="badge green">Transcrição completa</span>
+    <span class="badge green">Simulado com nota por domínio</span>
   </div>
+  <div class="extras">{extra}</div>
 </header>
 
 <p class="carhint">🚗 No carro ou no fone: ⏮ volta 10 s · ⏭ avança 10 s · atravessa as seções como faixa única</p>
 
 <div class="section-head"><h2>Conteúdo</h2><p>Uma seção de até 10 minutos para cada 10% da prova. Executar a auditoria (35%) ocupa quatro seções; ambiente de TI (25%), três.</p></div>
 {"".join(cards)}
-<div class="section-head"><h2>Perguntas e respostas</h2><p>Em produção: cerca de 1 hora em capítulos de ~8 minutos, no formato pergunta → silêncio para você responder → resposta.</p></div>
-<div class="section-head"><h2>Simulado diagnóstico</h2><p>Em produção: 20 questões de múltipla escolha com nota por domínio.</p></div>
+<div class="section-head"><h2>Perguntas e respostas</h2><p>Capítulos de ~8 minutos no formato pergunta → silêncio para você responder em voz alta → resposta. Algumas perguntas voltam mais adiante, de propósito.</p></div>
+{qa}
+<div class="section-head"><h2>Simulado diagnóstico</h2><p>20 questões nos pesos da prova, com nota por domínio e revisão das erradas. <a href="simulado.html" style="color:#60a5fa">Fazer o simulado →</a></p></div>
 
 <footer>Curso aberto de estudo · <a href="{REPO}" style="color:#475569">código-fonte e roteiros no GitHub</a><br>Material independente, sem vínculo com a ISACA. IT Audit Fundamentals é marca da ISACA.</footer>
 
@@ -173,7 +304,7 @@ def main() -> None:
     tpl = open(os.path.join(RAIZ, "site", "template.html"), encoding="utf-8").read()
     out = tpl.replace("<!--CORPO-->", corpo).replace("/*QUIZZES*/", json.dumps(quizzes, ensure_ascii=False))
     open(os.path.join(DOCS, "index.html"), "w", encoding="utf-8").write(out)
-    print(f"docs/index.html: {prontas} seções com áudio, {mmss(total)}")
+    print(f"docs/index.html: {prontas} seções ({mmss(total)}), {n_perg} perguntas ({mmss(total_qa)}), simulado com {n_sim} questões, leitura={tem_leitura}")
 
 
 if __name__ == "__main__":

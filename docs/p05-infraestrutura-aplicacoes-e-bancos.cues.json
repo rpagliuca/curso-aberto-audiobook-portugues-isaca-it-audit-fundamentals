@@ -1,0 +1,167 @@
+{
+ "slug": "p05-infraestrutura-aplicacoes-e-bancos",
+ "duracao": 403.0,
+ "cues": [
+  {
+   "id": "inventario",
+   "revisao": false,
+   "t_pergunta": 8.34,
+   "pausa": 8.9,
+   "t_resposta": 20.51
+  },
+  {
+   "id": "descarte",
+   "revisao": false,
+   "t_pergunta": 26.34,
+   "pausa": 8.1,
+   "t_resposta": 36.66
+  },
+  {
+   "id": "firewall",
+   "revisao": false,
+   "t_pergunta": 41.96,
+   "pausa": 7.8,
+   "t_resposta": 52.33
+  },
+  {
+   "id": "dmz",
+   "revisao": false,
+   "t_pergunta": 57.39,
+   "pausa": 7.5,
+   "t_resposta": 69.18
+  },
+  {
+   "id": "firewall",
+   "revisao": true,
+   "t_pergunta": 78.38,
+   "pausa": 6.3,
+   "t_resposta": 87.25
+  },
+  {
+   "id": "hardening",
+   "revisao": false,
+   "t_pergunta": 92.31,
+   "pausa": 6.5,
+   "t_resposta": 103.28
+  },
+  {
+   "id": "patch",
+   "revisao": false,
+   "t_pergunta": 107.42,
+   "pausa": 9.0,
+   "t_resposta": 119.38
+  },
+  {
+   "id": "hipervisor",
+   "revisao": false,
+   "t_pergunta": 125.28,
+   "pausa": 6.6,
+   "t_resposta": 135.3
+  },
+  {
+   "id": "hardening",
+   "revisao": true,
+   "t_pergunta": 143.74,
+   "pausa": 5.5,
+   "t_resposta": 153.7
+  },
+  {
+   "id": "check-digit",
+   "revisao": false,
+   "t_pergunta": 157.84,
+   "pausa": 7.0,
+   "t_resposta": 168.87
+  },
+  {
+   "id": "limit-check",
+   "revisao": false,
+   "t_pergunta": 173.4,
+   "pausa": 7.3,
+   "t_resposta": 184.73
+  },
+  {
+   "id": "hash-total",
+   "revisao": false,
+   "t_pergunta": 189.43,
+   "pausa": 6.5,
+   "t_resposta": 202.01
+  },
+  {
+   "id": "check-digit",
+   "revisao": true,
+   "t_pergunta": 206.18,
+   "pausa": 5.5,
+   "t_resposta": 215.71
+  },
+  {
+   "id": "integridade-ref",
+   "revisao": false,
+   "t_pergunta": 220.24,
+   "pausa": 8.6,
+   "t_resposta": 231.06
+  },
+  {
+   "id": "dba",
+   "revisao": false,
+   "t_pergunta": 236.69,
+   "pausa": 8.8,
+   "t_resposta": 248.7
+  },
+  {
+   "id": "euc",
+   "revisao": false,
+   "t_pergunta": 259.75,
+   "pausa": 8.3,
+   "t_resposta": 273.11
+  },
+  {
+   "id": "dba",
+   "revisao": true,
+   "t_pergunta": 278.55,
+   "pausa": 7.3,
+   "t_resposta": 289.05
+  },
+  {
+   "id": "seguranca-requisitos",
+   "revisao": false,
+   "t_pergunta": 294.83,
+   "pausa": 6.8,
+   "t_resposta": 305.2
+  },
+  {
+   "id": "uat",
+   "revisao": false,
+   "t_pergunta": 309.54,
+   "pausa": 8.8,
+   "t_resposta": 321.63
+  },
+  {
+   "id": "regressao",
+   "revisao": false,
+   "t_pergunta": 327.38,
+   "pausa": 7.6,
+   "t_resposta": 338.45
+  },
+  {
+   "id": "paralela",
+   "revisao": false,
+   "t_pergunta": 343.36,
+   "pausa": 8.9,
+   "t_resposta": 355.51
+  },
+  {
+   "id": "uat",
+   "revisao": true,
+   "t_pergunta": 361.36,
+   "pausa": 7.3,
+   "t_resposta": 371.95
+  },
+  {
+   "id": "auditor-dev",
+   "revisao": false,
+   "t_pergunta": 377.71,
+   "pausa": 8.6,
+   "t_resposta": 389.28
+  }
+ ]
+}

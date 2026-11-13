@@ -1,0 +1,188 @@
+{
+ "slug": "p03-testes-amostragem-e-analise-de-dados",
+ "duracao": 450.3,
+ "cues": [
+  {
+   "id": "compliance-test",
+   "revisao": false,
+   "t_pergunta": 8.75,
+   "pausa": 9.7,
+   "t_resposta": 21.37
+  },
+  {
+   "id": "substantivo",
+   "revisao": false,
+   "t_pergunta": 27.77,
+   "pausa": 7.7,
+   "t_resposta": 38.22
+  },
+  {
+   "id": "fraco-mais",
+   "revisao": false,
+   "t_pergunta": 43.23,
+   "pausa": 5.6,
+   "t_resposta": 53.86
+  },
+  {
+   "id": "compliance-test",
+   "revisao": true,
+   "t_pergunta": 62.48,
+   "pausa": 8.2,
+   "t_resposta": 73.6
+  },
+  {
+   "id": "estatistica",
+   "revisao": false,
+   "t_pergunta": 80.0,
+   "pausa": 8.0,
+   "t_resposta": 93.3
+  },
+  {
+   "id": "atributos",
+   "revisao": false,
+   "t_pergunta": 98.52,
+   "pausa": 7.8,
+   "t_resposta": 110.13
+  },
+  {
+   "id": "variaveis",
+   "revisao": false,
+   "t_pergunta": 115.21,
+   "pausa": 8.1,
+   "t_resposta": 126.16
+  },
+  {
+   "id": "descoberta",
+   "revisao": false,
+   "t_pergunta": 131.41,
+   "pausa": 8.0,
+   "t_resposta": 144.04
+  },
+  {
+   "id": "atributos",
+   "revisao": true,
+   "t_pergunta": 149.26,
+   "pausa": 6.3,
+   "t_resposta": 159.37
+  },
+  {
+   "id": "tam-confianca",
+   "revisao": false,
+   "t_pergunta": 164.45,
+   "pausa": 5.6,
+   "t_resposta": 173.93
+  },
+  {
+   "id": "tam-tolerado",
+   "revisao": false,
+   "t_pergunta": 177.4,
+   "pausa": 5.8,
+   "t_resposta": 184.92
+  },
+  {
+   "id": "tam-confianca",
+   "revisao": true,
+   "t_pergunta": 188.53,
+   "pausa": 5.5,
+   "t_resposta": 197.94
+  },
+  {
+   "id": "caats",
+   "revisao": false,
+   "t_pergunta": 201.41,
+   "pausa": 8.4,
+   "t_resposta": 213.82
+  },
+  {
+   "id": "itf",
+   "revisao": false,
+   "t_pergunta": 219.33,
+   "pausa": 8.6,
+   "t_resposta": 232.82
+  },
+  {
+   "id": "paralela",
+   "revisao": false,
+   "t_pergunta": 242.75,
+   "pausa": 7.8,
+   "t_resposta": 256.02
+  },
+  {
+   "id": "itf",
+   "revisao": true,
+   "t_pergunta": 261.08,
+   "pausa": 7.1,
+   "t_resposta": 273.08
+  },
+  {
+   "id": "continua",
+   "revisao": false,
+   "t_pergunta": 278.73,
+   "pausa": 6.2,
+   "t_resposta": 288.61
+  },
+  {
+   "id": "papeis",
+   "revisao": false,
+   "t_pergunta": 296.25,
+   "pausa": 8.7,
+   "t_resposta": 308.65
+  },
+  {
+   "id": "papeis-dono",
+   "revisao": false,
+   "t_pergunta": 314.37,
+   "pausa": 7.1,
+   "t_resposta": 323.6
+  },
+  {
+   "id": "triangulo",
+   "revisao": false,
+   "t_pergunta": 331.05,
+   "pausa": 7.6,
+   "t_resposta": 341.15
+  },
+  {
+   "id": "triangulo",
+   "revisao": true,
+   "t_pergunta": 346.06,
+   "pausa": 6.1,
+   "t_resposta": 354.66
+  },
+  {
+   "id": "fraude-quem",
+   "revisao": false,
+   "t_pergunta": 359.57,
+   "pausa": 6.0,
+   "t_resposta": 370.37
+  },
+  {
+   "id": "julgamento-limite",
+   "revisao": false,
+   "t_pergunta": 378.13,
+   "pausa": 6.9,
+   "t_resposta": 387.57
+  },
+  {
+   "id": "pare-siga",
+   "revisao": false,
+   "t_pergunta": 391.98,
+   "pausa": 6.5,
+   "t_resposta": 401.51
+  },
+  {
+   "id": "dados-completos",
+   "revisao": false,
+   "t_pergunta": 410.16,
+   "pausa": 10.0,
+   "t_resposta": 423.68
+  },
+  {
+   "id": "julgamento-limite",
+   "revisao": true,
+   "t_pergunta": 430.3,
+   "pausa": 5.5,
+   "t_resposta": 438.36
+  }
+ ]
+}

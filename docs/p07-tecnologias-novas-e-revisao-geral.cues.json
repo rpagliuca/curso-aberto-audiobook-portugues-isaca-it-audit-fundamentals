@@ -1,0 +1,188 @@
+{
+ "slug": "p07-tecnologias-novas-e-revisao-geral",
+ "duracao": 432.6,
+ "cues": [
+  {
+   "id": "vies",
+   "revisao": false,
+   "t_pergunta": 8.56,
+   "pausa": 6.0,
+   "t_resposta": 20.86
+  },
+  {
+   "id": "drift",
+   "revisao": false,
+   "t_pergunta": 24.62,
+   "pausa": 7.0,
+   "t_resposta": 37.07
+  },
+  {
+   "id": "explicabilidade",
+   "revisao": false,
+   "t_pergunta": 41.6,
+   "pausa": 6.9,
+   "t_resposta": 52.21
+  },
+  {
+   "id": "alucinacao",
+   "revisao": false,
+   "t_pergunta": 56.67,
+   "pausa": 5.6,
+   "t_resposta": 67.41
+  },
+  {
+   "id": "vies",
+   "revisao": true,
+   "t_pergunta": 70.89,
+   "pausa": 5.5,
+   "t_resposta": 82.72
+  },
+  {
+   "id": "rpa",
+   "revisao": false,
+   "t_pergunta": 86.48,
+   "pausa": 8.6,
+   "t_resposta": 98.43
+  },
+  {
+   "id": "devops-sod",
+   "revisao": false,
+   "t_pergunta": 107.73,
+   "pausa": 8.8,
+   "t_resposta": 119.43
+  },
+  {
+   "id": "iot",
+   "revisao": false,
+   "t_pergunta": 128.95,
+   "pausa": 7.8,
+   "t_resposta": 140.37
+  },
+  {
+   "id": "blockchain",
+   "revisao": false,
+   "t_pergunta": 145.45,
+   "pausa": 8.9,
+   "t_resposta": 159.43
+  },
+  {
+   "id": "devops-sod",
+   "revisao": true,
+   "t_pergunta": 165.31,
+   "pausa": 7.3,
+   "t_resposta": 175.52
+  },
+  {
+   "id": "zero-trust",
+   "revisao": false,
+   "t_pergunta": 181.27,
+   "pausa": 6.9,
+   "t_resposta": 191.93
+  },
+  {
+   "id": "mix-charter",
+   "revisao": false,
+   "t_pergunta": 196.34,
+   "pausa": 7.9,
+   "t_resposta": 207.87
+  },
+  {
+   "id": "mix-deteccao",
+   "revisao": false,
+   "t_pergunta": 213.0,
+   "pausa": 5.8,
+   "t_resposta": 221.81
+  },
+  {
+   "id": "mix-escopo",
+   "revisao": false,
+   "t_pergunta": 225.48,
+   "pausa": 10.0,
+   "t_resposta": 239.17
+  },
+  {
+   "id": "blockchain",
+   "revisao": true,
+   "t_pergunta": 246.41,
+   "pausa": 7.4,
+   "t_resposta": 258.89
+  },
+  {
+   "id": "mix-amostra",
+   "revisao": false,
+   "t_pergunta": 264.77,
+   "pausa": 5.6,
+   "t_resposta": 273.55
+  },
+  {
+   "id": "mix-achado",
+   "revisao": false,
+   "t_pergunta": 277.02,
+   "pausa": 7.5,
+   "t_resposta": 286.67
+  },
+  {
+   "id": "mix-hipervisor",
+   "revisao": false,
+   "t_pergunta": 291.49,
+   "pausa": 5.6,
+   "t_resposta": 300.13
+  },
+  {
+   "id": "mix-bia",
+   "revisao": false,
+   "t_pergunta": 303.6,
+   "pausa": 6.6,
+   "t_resposta": 312.49
+  },
+  {
+   "id": "mix-deteccao",
+   "revisao": true,
+   "t_pergunta": 316.73,
+   "pausa": 5.5,
+   "t_resposta": 325.2
+  },
+  {
+   "id": "mix-soc",
+   "revisao": false,
+   "t_pergunta": 328.87,
+   "pausa": 5.6,
+   "t_resposta": 338.37
+  },
+  {
+   "id": "mix-achado",
+   "revisao": true,
+   "t_pergunta": 341.84,
+   "pausa": 6.0,
+   "t_resposta": 350.0
+  },
+  {
+   "id": "smart-contract",
+   "revisao": false,
+   "t_pergunta": 354.81,
+   "pausa": 7.8,
+   "t_resposta": 366.67
+  },
+  {
+   "id": "iac",
+   "revisao": false,
+   "t_pergunta": 371.73,
+   "pausa": 8.3,
+   "t_resposta": 385.35
+  },
+  {
+   "id": "human-loop",
+   "revisao": false,
+   "t_pergunta": 390.79,
+   "pausa": 7.4,
+   "t_resposta": 403.38
+  },
+  {
+   "id": "iac",
+   "revisao": true,
+   "t_pergunta": 408.15,
+   "pausa": 6.8,
+   "t_resposta": 420.27
+  }
+ ]
+}

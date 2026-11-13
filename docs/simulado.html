@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado diagnóstico · ISACA IT Audit Fundamentals</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;padding:24px 16px 60px}
+  header{text-align:center;margin-bottom:24px}
+  header h1{font-size:1.4rem;font-weight:700;color:#f8fafc;letter-spacing:-.02em}
+  header p{margin-top:6px;font-size:.85rem;color:#94a3b8;line-height:1.5}
+  a{color:#60a5fa}
+  .card{background:#1e2130;border:1px solid #2d3448;border-radius:14px;padding:20px;margin:0 auto 16px;max-width:680px}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:.75rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+  .tag{padding:2px 8px;border-radius:4px;font-size:.68rem;font-weight:600;background:#172554;color:#93c5fd;border:1px solid #1e3a8a;text-transform:none;letter-spacing:0}
+  .bar{height:4px;background:#161b27;border-radius:2px;margin-bottom:16px;overflow:hidden}
+  .bar div{height:100%;background:#3b82f6;transition:width .2s}
+  .qtext{font-size:.92rem;line-height:1.6;margin-bottom:14px;font-weight:500}
+  .options{display:flex;flex-direction:column;gap:7px}
+  .option{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1px solid #2d3448;border-radius:8px;cursor:pointer;font-size:.85rem;color:#94a3b8;line-height:1.5;transition:all .15s}
+  .option:hover{border-color:#3d4d6a;color:#cbd5e1;background:#1a2133}
+  .option.sel{border-color:#3b82f6;color:#e2e8f0;background:#172554}
+  .option.correct{border-color:#22c55e;color:#86efac;background:#0f2a1a}
+  .option.wrong{border-color:#ef4444;color:#fca5a5;background:#2a0f0f}
+  .letter{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:1px solid #3d4d6a;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#64748b}
+  .nav{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
+  button{padding:10px 18px;background:#1e3a5f;border:1px solid #3b82f6;border-radius:8px;color:#60a5fa;font-size:.82rem;font-weight:600;cursor:pointer}
+  button.ghost{background:#161b27;border-color:#2d3448;color:#94a3b8}
+  button:disabled{opacity:.35;cursor:default}
+  .score{text-align:center;padding:18px;border-radius:10px;font-weight:600;margin-bottom:16px}
+  .score.pass{background:#0f2a1a;border:1px solid #22c55e;color:#86efac}
+  .score.fail{background:#2a0f0f;border:1px solid #ef4444;color:#fca5a5}
+  .score b{font-size:2rem;display:block}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:16px}
+  td,th{padding:7px 6px;border-bottom:1px solid #2d3448;text-align:left}
+  th{color:#64748b;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
+  td.n{text-align:right;font-variant-numeric:tabular-nums}
+  .low{color:#fca5a5}.ok{color:#86efac}
+  .code{font-family:ui-monospace,monospace;background:#0f1a2e;border:1px solid #1e3a5f;border-radius:8px;padding:12px;font-size:.85rem;color:#93c5fd;word-break:break-all;margin:8px 0 12px}
+  h2{font-size:.78rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin:18px 0 10px}
+  .rev{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #2d3448}
+  .exp{margin-top:10px;padding:10px 12px;background:#0f1a2e;border:1px solid #1e3a5f;border-radius:8px;font-size:.8rem;color:#93c5fd;line-height:1.6}
+  .hint{font-size:.78rem;color:#64748b;line-height:1.5}
+</style>
+</head>
+<body>
+<header>
+  <h1>Simulado diagnóstico</h1>
+  <p>20 questões · 6 domínios, nos pesos da prova · sem gabarito durante a prova<br><a href="index.html">← voltar ao curso</a></p>
+</header>
+<div class="card" id="app"></div>
+<script>
+const D={"D1": "Audit Function", "D2": "Controls, Risk and Audit", "D3": "Performing an Audit", "D4": "IT Environment and Components", "D5": "Specific Audit Subjects", "D6": "Overview of Newer Technologies"};
+const Q=[
+{
+"d": "D1",
+"q": "Um auditor de sistemas participou, no ano passado, da escolha e da configuração do novo sistema de compras. Agora o plano anual prevê uma auditoria desse sistema e ele foi escalado. Qual é a melhor ação?",
+"o": [
+"Executar a auditoria normalmente, porque conhece bem o sistema",
+"Comunicar o conflito à gestão da auditoria antes de começar, para que outro auditor seja avaliado",
+"Executar a auditoria e omitir do relatório a própria participação",
+"Pedir ao gestor de compras que aprove a sua participação"
+],
+"a": 1,
+"e": "Auditar o próprio trabalho fere a independência profissional. O conflito é comunicado antes de seguir; normalmente outro auditor assume."
+},
+{
+"d": "D2",
+"q": "Numa equipe pequena, a mesma pessoa cadastra fornecedores e lança pagamentos. Não há como separar as funções. Qual controle é o mais adequado?",
+"o": [
+"Nenhum, porque a segregação é impossível",
+"Trocar a senha dessa pessoa todo mês",
+"Uma revisão independente e periódica dos cadastros e pagamentos por outra pessoa",
+"Um backup diário da base de fornecedores"
+],
+"a": 2,
+"e": "Sem segregação, entra um controle compensatório: a revisão independente reduz o mesmo risco por outro caminho."
+},
+{
+"d": "D2",
+"q": "Uma área processa transações de alto valor com muitas exceções manuais, e os testes mostraram controles fracos. Para manter o risco de auditoria aceitável, o auditor deve:",
+"o": [
+"Reduzir os testes, porque os controles já foram avaliados",
+"Aumentar a extensão dos testes substantivos, reduzindo o risco de detecção",
+"Aceitar um risco de auditoria maior nessa área",
+"Reclassificar o risco inerente como baixo"
+],
+"a": 1,
+"e": "Com risco inerente e de controle altos, o único componente que o auditor ajusta é o risco de detecção, testando mais."
+},
+{
+"d": "D3",
+"q": "Ao montar o plano anual, a função de auditoria tem horas para cobrir só um terço do universo de auditoria. Qual critério deve orientar a escolha?",
+"o": [
+"A ordem em que as áreas pediram auditoria",
+"Auditar as áreas que nunca tiveram achados",
+"O resultado da avaliação de riscos de cada item do universo",
+"Distribuir as horas igualmente entre todas as áreas"
+],
+"a": 2,
+"e": "Na abordagem baseada em risco, os itens de risco mais alto entram primeiro."
+},
+{
+"d": "D3",
+"q": "Durante o trabalho de campo, o gestor de TI se recusa a liberar os logs do banco de dados, que estão no escopo. O auditor tentou resolver com ele e não conseguiu. O próximo passo é:",
+"o": [
+"Retirar o banco de dados do escopo e seguir",
+"Obter os logs com a ajuda de um administrador, sem avisar o gestor",
+"Levar a limitação de escopo ao nível superior e ao comitê de auditoria e registrá-la no relatório",
+"Concluir que o controle é eficaz, por falta de evidência contrária"
+],
+"a": 2,
+"e": "Limitação de escopo não resolvida é comunicada e relatada; nunca aceita em silêncio nem contornada."
+},
+{
+"d": "D3",
+"q": "Qual evidência dá ao auditor a maior segurança de que o controle de bloqueio de conta após cinco tentativas erradas funciona?",
+"o": [
+"A política de senhas aprovada pela diretoria",
+"A declaração do administrador de que o bloqueio está ativo",
+"O auditor tentar, numa conta de teste, seis logins errados e observar o bloqueio",
+"Um e-mail antigo da equipe de suporte sobre o assunto"
+],
+"a": 2,
+"e": "A reexecução pelo próprio auditor é a evidência mais forte do funcionamento de um controle."
+},
+{
+"d": "D3",
+"q": "O auditor quer estimar o valor total de notas fiscais com erro numa população de cinquenta mil notas, dando mais atenção às de valor alto. Qual amostragem é a mais adequada?",
+"o": [
+"Amostragem de descoberta",
+"Amostragem por atributos do tipo pare ou siga",
+"Amostragem por variáveis, estratificada por valor",
+"Amostragem por julgamento das notas mais recentes"
+],
+"a": 2,
+"e": "Estimar valor é amostragem por variáveis; estratificar por valor dá peso às faixas mais altas."
+},
+{
+"d": "D3",
+"q": "O auditor quer comparar a lista completa de fornecedores com a de funcionários, procurando contas bancárias iguais. A técnica mais eficiente é:",
+"o": [
+"Entrevistar o gestor de compras",
+"Usar software generalizado de auditoria sobre cópias das duas bases",
+"Selecionar vinte fornecedores por julgamento",
+"Pedir ao RH uma declaração de que não há conflito"
+],
+"a": 1,
+"e": "As técnicas assistidas por computador permitem cruzar cem por cento das duas populações."
+},
+{
+"d": "D3",
+"q": "Na reunião de encerramento, o gestor discorda de um achado sobre contas de ex-funcionários ativas. O auditor revê a evidência e ela confirma o achado. O que fazer?",
+"o": [
+"Retirar o achado para preservar a relação",
+"Rebaixar a gravidade para baixa",
+"Manter o achado e registrar a posição da gestão no relatório",
+"Adiar o relatório até haver acordo"
+],
+"a": 2,
+"e": "Achado apoiado em evidência permanece; a discordância da gestão fica registrada."
+},
+{
+"d": "D3",
+"q": "Seis meses após o relatório, várias ações combinadas com a gestão estão vencidas e sem justificativa. Qual é a responsabilidade da auditoria?",
+"o": [
+"Executar ela mesma as correções pendentes",
+"Nenhuma, porque a correção é da gestão",
+"Relatar as ações vencidas ao comitê de auditoria, como parte do acompanhamento",
+"Encerrar os achados para não poluir os indicadores"
+],
+"a": 2,
+"e": "O acompanhamento é da auditoria; a correção é da gestão; o vencido sobe ao comitê."
+},
+{
+"d": "D4",
+"q": "O auditor encontra dezenas de regras no firewall sem dono nem justificativa, algumas liberando qualquer origem para qualquer destino. Qual é a recomendação mais adequada?",
+"o": [
+"Trocar o fabricante do firewall",
+"Revisar periodicamente as regras, com dono e justificativa, partindo de negar tudo por padrão",
+"Desligar o firewall para simplificar a rede",
+"Liberar todo o tráfego interno"
+],
+"a": 1,
+"e": "Negar por padrão e revisar as regras com dono e justificativa reduz a superfície de ataque."
+},
+{
+"d": "D4",
+"q": "Um único servidor físico roda máquinas virtuais do sistema de pagamentos e do site público, e vários administradores têm acesso à console do hipervisor. Qual é o maior risco?",
+"o": [
+"Falta de espaço em disco",
+"O comprometimento do hipervisor dar acesso a todas as máquinas virtuais",
+"O site ficar mais lento",
+"A licença do sistema operacional vencer"
+],
+"a": 1,
+"e": "O hipervisor é ponto único de ataque; o acesso a ele deve ser dos mais restritos."
+},
+{
+"d": "D4",
+"q": "Um sistema de pagamentos recebe arquivos de outro sistema todas as noites. Qual controle confirma que nenhum registro se perdeu no caminho?",
+"o": [
+"Verificação de formato",
+"Conciliação de totais de controle, como contagem de registros e total de hash, entre origem e destino",
+"Dígito verificador no nome do arquivo",
+"Teste de aceitação do usuário"
+],
+"a": 1,
+"e": "Totais de controle conferidos nos dois lados mostram completude e integridade da interface."
+},
+{
+"d": "D4",
+"q": "Um sistema novo vai substituir o da folha de pagamento, e erro no primeiro mês seria inaceitável. Qual forma de implantação o auditor deve esperar ver?",
+"o": [
+"De uma vez, para encurtar o projeto",
+"Em paralelo, comparando os resultados dos dois sistemas",
+"Piloto sem comparação de resultados",
+"Sem migração de dados"
+],
+"a": 1,
+"e": "A implantação paralela é a mais segura: o antigo segue rodando e os resultados são comparados."
+},
+{
+"d": "D4",
+"q": "A análise de impacto no negócio definiu que o sistema de vendas pode perder, no máximo, quinze minutos de dados. O backup atual é diário. Qual conclusão?",
+"o": [
+"O backup atende, porque é feito todo dia",
+"O backup não atende ao R.P.O. definido; é preciso replicação ou cópias mais frequentes",
+"O problema é o R.T.O., não o backup",
+"Basta guardar o backup fora do local"
+],
+"a": 1,
+"e": "O RPO de quinze minutos exige cópias pelo menos a cada quinze minutos."
+},
+{
+"d": "D5",
+"q": "Para testar se toda mudança em produção foi aprovada, qual é a melhor fonte para a amostra?",
+"o": [
+"Os pedidos de mudança aprovados no sistema de chamados",
+"A lista de alterações extraída da própria produção, como registros de versão e de implantação",
+"As mudanças que o gestor de TI indicar",
+"As mudanças do último dia do mês"
+],
+"a": 1,
+"e": "Partir dos pedidos aprovados não encontra as mudanças feitas sem pedido, que são as mais arriscadas."
+},
+{
+"d": "D5",
+"q": "Um provedor de nuvem crítico entrega um relatório SOC 2 tipo 1. O que o auditor deve considerar?",
+"o": [
+"Que o relatório prova o funcionamento dos controles no último ano",
+"Que o tipo 1 avalia só o desenho numa data; um tipo 2 daria evidência de funcionamento ao longo de um período",
+"Que relatórios SOC não têm valor para auditoria",
+"Que o cliente deixa de ter responsabilidade sobre os dados"
+],
+"a": 1,
+"e": "O tipo 2 testa o funcionamento num período; e os controles complementares do usuário seguem com o cliente."
+},
+{
+"d": "D5",
+"q": "Na revisão de acessos, os gestores aprovaram todas as contas sem nenhuma retirada, inclusive de pessoas que mudaram de área há meses. O que isso indica?",
+"o": [
+"Que os acessos estão corretos",
+"Que a revisão é feita de forma mecânica e não evita o acúmulo de acessos",
+"Que a autenticação multifator é desnecessária",
+"Que o privilégio mínimo foi aplicado"
+],
+"a": 1,
+"e": "Aprovação em massa sugere revisão ineficaz; o acúmulo por mudança de função é o privilege creep."
+},
+{
+"d": "D6",
+"q": "Uma empresa adota CI/CD e libera dezenas de mudanças por dia, sem aprovação manual de cada uma. O que o auditor deve avaliar?",
+"o": [
+"Se cada mudança tem uma assinatura em papel",
+"Se os controles estão embutidos na esteira: revisão de código por outra pessoa, testes obrigatórios e acesso restrito à esteira",
+"Se a empresa voltou ao modelo em cascata",
+"Nada, porque DevOps dispensa controles"
+],
+"a": 1,
+"e": "Em DevOps os controles migram para a ferramenta, e a segregação continua: ninguém aprova a própria mudança."
+},
+{
+"d": "D6",
+"q": "Um modelo de aprendizado de máquina aprova crédito. Qual pergunta do auditor trata o risco de viés?",
+"o": [
+"Qual é a velocidade do servidor que roda o modelo?",
+"Os dados de treinamento foram avaliados quanto a origem e qualidade, e o modelo foi testado quanto a viés antes da produção?",
+"O modelo usa nuvem pública?",
+"Quantos usuários acessam o sistema?"
+],
+"a": 1,
+"e": "Viés nasce dos dados de treinamento; a resposta é governança dos dados e teste do modelo."
+}
+];
+const KEY="isaca_itaf_simulado1";let st={i:0,ans:Array(Q.length).fill(-1),done:false};
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.ans&&s.ans.length===Q.length)st=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const L="ABCD",app=document.getElementById("app");
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function render(){st.done?result():question()}
+function question(){
+  const q=Q[st.i],n=st.ans.filter(a=>a>=0).length;
+  app.innerHTML=`<div class="top"><span>Questão ${st.i+1} de ${Q.length}</span><span class="tag">${q.d} ${D[q.d]}</span></div>
+  <div class="bar"><div style="width:${n/Q.length*100}%"></div></div>
+  <div class="qtext">${esc(q.q)}</div>
+  <div class="options">${q.o.map((o,k)=>`<div class="option ${st.ans[st.i]===k?"sel":""}" onclick="pick(${k})"><span class="letter">${L[k]}</span><span>${esc(o)}</span></div>`).join("")}</div>
+  <div class="nav"><button class="ghost" onclick="go(-1)" ${st.i===0?"disabled":""}>← Anterior</button>
+  ${st.i<Q.length-1?`<button onclick="go(1)">Próxima →</button>`:`<button onclick="finish()">Finalizar</button>`}</div>
+  <p class="hint" style="margin-top:14px">Responda sem consultar material. Se não souber, deixe em branco: chutar mascara a lacuna. O progresso fica salvo neste navegador.</p>`;
+}
+function pick(k){st.ans[st.i]=st.ans[st.i]===k?-1:k;save();question()}
+function go(d){st.i+=d;save();question();scrollTo(0,0)}
+function finish(){const b=st.ans.filter(a=>a<0).length;if(b&&!confirm(b+" questão(ões) em branco. Finalizar mesmo assim?"))return;st.done=true;save();render();scrollTo(0,0)}
+function result(){
+  const per={};Object.keys(D).forEach(d=>per[d]=[0,0]);let ok=0;
+  Q.forEach((q,i)=>{per[q.d][1]++;if(st.ans[i]===q.a){per[q.d][0]++;ok++}});
+  const pct=Math.round(ok/Q.length*100),code="ITAF1-"+st.ans.map(a=>a<0?"-":L[a]).join("");
+  const wrong=Q.map((q,i)=>({q,i})).filter(x=>st.ans[x.i]!==x.q.a);
+  app.innerHTML=`<div class="score ${pct>=65?"pass":"fail"}"><b>${ok}/${Q.length} · ${pct}%</b>${pct>=65?"Acima da nota de aprovação de 65%":"Abaixo da nota de aprovação de 65%"}</div>
+  <table><tr><th>Domínio</th><th class="n">Acertos</th><th class="n">%</th></tr>${Object.keys(D).map(d=>{const p=Math.round(per[d][0]/per[d][1]*100);return`<tr><td>${d} ${D[d]}</td><td class="n">${per[d][0]}/${per[d][1]}</td><td class="n ${p<60?"low":"ok"}">${p}%</td></tr>`}).join("")}</table>
+  <h2>Código do resultado</h2><p class="hint">Registro compacto das suas respostas. Guarde para comparar com uma tentativa futura.</p>
+  <div class="code" id="code">${code}</div><button onclick="navigator.clipboard&&navigator.clipboard.writeText('${code}').then(()=>this.textContent='Copiado ✓')">Copiar código</button>
+  <h2>Revisão das questões erradas ou em branco (${wrong.length})</h2>
+  ${wrong.map(({q,i})=>`<div class="rev"><div class="top"><span>Questão ${i+1}</span><span class="tag">${q.d}</span></div><div class="qtext">${esc(q.q)}</div>
+  <div class="options">${q.o.map((o,k)=>`<div class="option ${k===q.a?"correct":st.ans[i]===k?"wrong":""}" style="cursor:default"><span class="letter">${L[k]}</span><span>${esc(o)}</span></div>`).join("")}</div><div class="exp">${esc(q.e)}</div></div>`).join("")||'<p class="hint">Nenhuma. 🎯</p>'}
+  <div class="nav"><button class="ghost" onclick="if(confirm('Apagar respostas e refazer?')){localStorage.removeItem(KEY);location.reload()}">Refazer do zero</button><a href="index.html"><button>Voltar ao curso</button></a></div>`;
+}
+render();
+</script>
+</body>
+</html>

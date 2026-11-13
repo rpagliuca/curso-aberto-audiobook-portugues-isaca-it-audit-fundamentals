@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de leitura · ISACA IT Audit Fundamentals</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0f1117;color:#e2e8f0;padding:24px 16px 60px}
+  main{max-width:720px;margin:0 auto;line-height:1.65;font-size:.95rem}
+  .voltar{display:block;text-align:center;margin-bottom:18px;font-size:.85rem}
+  a{color:#60a5fa}
+  h1{font-size:1.4rem;color:#f8fafc;text-align:center;margin-bottom:8px;letter-spacing:-.02em}
+  h2{font-size:1.1rem;color:#f1f5f9;margin:34px 0 10px;padding-top:14px;border-top:1px solid #2d3448}
+  h3{font-size:.95rem;color:#93c5fd;margin:20px 0 6px}
+  p{margin:8px 0;color:#cbd5e1}
+  ul{margin:8px 0 8px 20px;color:#cbd5e1}
+  li{margin:4px 0}
+  strong{color:#f8fafc}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.85rem;display:block;overflow-x:auto}
+  th,td{padding:7px 8px;border-bottom:1px solid #2d3448;text-align:left;vertical-align:top}
+  th{color:#94a3b8;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;background:#161b27}
+  footer{margin-top:40px;text-align:center;font-size:.75rem;color:#475569}
+</style>
+</head>
+<body>
+<main>
+<a class="voltar" href="index.html">← voltar ao curso</a>
+<h1>Guia de leitura</h1>
+<p>Texto para ler, não para ouvir: o mesmo conteúdo das dez seções em forma de tabelas, regras de decisão e um glossário português–inglês. A prova é em inglês, então os termos aparecem nas duas línguas.</p>
+<h2>A prova</h2>
+<table><thead><tr><th>Item</th><th>Valor</th></tr></thead><tbody><tr><td>Formato</td><td>Online, com fiscal remoto pela câmera</td></tr><tr><td>Duração</td><td>2 horas</td></tr><tr><td>Aprovação</td><td>65%</td></tr><tr><td>Idioma</td><td>Inglês</td></tr></tbody></table>
+<table><thead><tr><th>Domínio</th><th>Peso</th><th>Seções do curso</th></tr></thead><tbody><tr><td>Performing an Audit</td><td>35%</td><td>2, 3, 4 e 5</td></tr><tr><td>IT Environment and Components</td><td>25%</td><td>6, 7 e 8</td></tr><tr><td>Specific Audit Subjects</td><td>15%</td><td>9</td></tr><tr><td>Overview of Newer Technologies</td><td>12%</td><td>10</td></tr><tr><td>Controls, Risk and Audit</td><td>8%</td><td>1</td></tr><tr><td>Audit Function</td><td>5%</td><td>1</td></tr></tbody></table>
+<p><strong>Como a prova pensa.</strong> Quase toda questão de cenário pede &quot;a melhor&quot; ou &quot;a primeira&quot; ação. Três regras resolvem a maioria: o risco decide a prioridade; o auditor recomenda, mas não implanta; o que não se resolve com o auditado sobe ao comitê de auditoria.</p>
+<h2>1. A função de auditoria, controles e riscos</h2>
+<h3>Documentos e papéis</h3>
+<table><thead><tr><th>Documento</th><th>Cobre</th><th>Aprovado por</th></tr></thead><tbody><tr><td>Carta de auditoria (audit charter)</td><td>Toda a função: responsabilidade, autoridade, prestação de contas</td><td>Conselho e comitê de auditoria</td></tr><tr><td>Carta de contratação (engagement letter)</td><td>Um trabalho: objetivo, escopo, cronograma, relatórios</td><td>Acordada com o contratante</td></tr></tbody></table>
+<ul>
+<li><strong>Independência organizacional</strong>: a auditoria reporta ao comitê de auditoria, não à área auditada.</li>
+<li><strong>Independência profissional</strong>: o auditor não audita o que ajudou a implantar. Conflito se comunica antes de seguir.</li>
+<li><strong>Três linhas (IIA)</strong>: gestão operacional; risco e conformidade; auditoria interna.</li>
+<li><strong>ISACA</strong>: normas (standards, obrigatórias: gerais, de execução, de relatório) → diretrizes (guidelines) → ferramentas e técnicas (tools and techniques). Tudo dentro do ITAF.</li>
+<li><strong>Ética</strong>: objetividade, cuidado profissional, sigilo (salvo exigência legal), só aceitar trabalho para o qual há competência, informar fatos relevantes.</li>
+</ul>
+<h3>Controles</h3>
+<table><thead><tr><th>Tipo</th><th>Faz</th><th>Exemplos</th></tr></thead><tbody><tr><td>Preventivo (preventive)</td><td>Impede</td><td>Segregação de funções, controle de acesso, validação de entrada</td></tr><tr><td>Detectivo (detective)</td><td>Percebe e avisa</td><td>Revisão de logs, totais de controle, relatório de exceções</td></tr><tr><td>Corretivo (corrective)</td><td>Reduz o impacto e conserta</td><td>Backup, plano de recuperação de desastres</td></tr></tbody></table>
+<ul>
+<li><strong>Controles gerais de TI (IT general controls)</strong> valem para todo o ambiente; <strong>controles de aplicação (application controls)</strong> ficam num sistema. Gerais fracos derrubam a confiança nos de aplicação.</li>
+<li><strong>Compensatório (compensating control)</strong>: reduz o mesmo risco por outro caminho. Procure antes de relatar uma fraqueza.</li>
+<li><strong>Segurança razoável (reasonable assurance)</strong>: nenhum controle dá certeza absoluta.</li>
+</ul>
+<h3>Risco de auditoria (audit risk)</h3>
+<table><thead><tr><th>Componente</th><th>O que é</th><th>Quem controla</th></tr></thead><tbody><tr><td>Inerente (inherent risk)</td><td>Risco do processo sem controles</td><td>Ninguém; o auditor avalia</td></tr><tr><td>De controle (control risk)</td><td>Controles não evitarem nem detectarem</td><td>A gestão</td></tr><tr><td>De detecção (detection risk)</td><td>Os testes não acharem o erro</td><td><strong>O auditor</strong>, pela natureza, época e extensão dos testes</td></tr></tbody></table>
+<p><strong>Materialidade (materiality)</strong>: o que muda a decisão de quem lê o relatório. Em sistemas, nem sempre é dinheiro.</p>
+<h2>2. Planejamento baseado em risco</h2>
+<ul>
+<li>Universo de auditoria (audit universe) → avaliação de riscos (risk assessment) → plano anual aprovado pelo comitê, revisto quando surge risco novo.</li>
+<li><strong>Primeiro passo de um trabalho</strong>: entender o negócio e avaliar os riscos da área. Testar vem depois.</li>
+<li><strong>Objetivo</strong> (o que se quer concluir) ≠ <strong>escopo</strong> (sistemas, locais, processos, período).</li>
+<li><strong>Limitação de escopo</strong>: registrar → tentar resolver → comunicar no relatório e ao comitê. Nunca contornar.</li>
+<li><strong>Programa de auditoria (audit program)</strong>: liga risco → controle → teste.</li>
+<li><strong>Especialista</strong>: a auditoria avalia competência e independência e continua dona da conclusão.</li>
+</ul>
+<table><thead><tr><th>Tipo de auditoria</th><th>Pergunta</th></tr></thead><tbody><tr><td>Conformidade (compliance)</td><td>A regra está sendo seguida?</td></tr><tr><td>Financeira</td><td>As demonstrações são confiáveis?</td></tr><tr><td>Operacional</td><td>O processo é eficiente e eficaz?</td></tr><tr><td>Integrada (integrated)</td><td>Finanças, operação e sistemas juntos</td></tr><tr><td>Sistemas de informação</td><td>Os controles sobre a TI funcionam?</td></tr><tr><td>Forense (forensic)</td><td>Houve fraude? Evidência para processo</td></tr></tbody></table>
+<h2>3. Evidência, testes e amostragem</h2>
+<p><strong>Evidência</strong>: suficiente, confiável, relevante. Da mais forte para a mais fraca: obtida pelo próprio auditor (reexecução, observação, inspeção) → externa e independente → interna → verbal.</p>
+<table><thead><tr><th>Teste</th><th>Pergunta</th><th>Amostragem típica</th></tr></thead><tbody><tr><td>De controle ou conformidade (compliance test)</td><td>O controle foi aplicado?</td><td>Atributos (attribute sampling)</td></tr><tr><td>Substantivo (substantive test)</td><td>O valor está certo?</td><td>Variáveis (variable sampling)</td></tr></tbody></table>
+<p>Controle forte → menos teste substantivo. Controle fraco → mais teste substantivo.</p>
+<table><thead><tr><th>Amostragem</th><th>Quando</th></tr></thead><tbody><tr><td>Estatística (statistical)</td><td>Conclusão objetiva, com erro medido</td></tr><tr><td>Por julgamento (judgmental)</td><td>Rápida, sem medir o erro</td></tr><tr><td>Pare ou siga (stop-or-go)</td><td>Atributos, quando se espera pouquíssimo erro</td></tr><tr><td>Descoberta (discovery)</td><td>Basta um caso, como fraude</td></tr><tr><td>Estratificada (stratified)</td><td>Variáveis, com faixas de valor</td></tr></tbody></table>
+<table><thead><tr><th>Se aumenta...</th><th>A amostra...</th></tr></thead><tbody><tr><td>Nível de confiança (confidence level)</td><td>Aumenta</td></tr><tr><td>Erro esperado (expected error rate)</td><td>Aumenta</td></tr><tr><td>Erro tolerável (tolerable error rate)</td><td>Diminui</td></tr><tr><td>Força do controle interno</td><td>Diminui</td></tr></tbody></table>
+<h2>4. Análise de dados, papéis de trabalho e fraude</h2>
+<table><thead><tr><th>Técnica (CAATs)</th><th>Como funciona</th></tr></thead><tbody><tr><td>Software generalizado de auditoria (generalized audit software)</td><td>Lê arquivos, totaliza, estratifica, acha duplicidades e lacunas</td></tr><tr><td>Dados de teste (test data)</td><td>Transações fictícias processadas no sistema</td></tr><tr><td>Instalação integrada de teste (integrated test facility)</td><td>Entidade fictícia na produção; retirar os efeitos depois</td></tr><tr><td>Simulação paralela (parallel simulation)</td><td>Programa do auditor processa dados reais e compara</td></tr><tr><td>Módulo embutido (SCARF)</td><td>Grava transações que atendem a critérios</td></tr><tr><td>Instantâneo (snapshot)</td><td>Fotografa a transação em vários pontos</td></tr><tr><td>Ganchos de auditoria (audit hooks)</td><td>Alertam em tempo real</td></tr></tbody></table>
+<ul>
+<li>Validar a completude dos dados antes de analisar; trabalhar sobre cópia.</li>
+<li><strong>Auditoria contínua (continuous auditing)</strong> é da auditoria; <strong>monitoramento contínuo (continuous monitoring)</strong> é da gestão.</li>
+<li><strong>Papéis de trabalho</strong>: outro auditor chega à mesma conclusão; revisados por supervisor; pertencem à organização; acesso controlado.</li>
+<li><strong>Fraude</strong>: triângulo pressão, oportunidade, racionalização. Prevenir é da gestão. O auditor considera o risco, aplica ceticismo profissional e, diante de indício, comunica ao nível adequado (comitê, se a gestão estiver envolvida), sem investigar sozinho.</li>
+</ul>
+<h2>5. Achados, relatório e acompanhamento</h2>
+<table><thead><tr><th>Parte do achado</th><th>Pergunta</th></tr></thead><tbody><tr><td>Condição (condition)</td><td>O que é?</td></tr><tr><td>Critério (criteria)</td><td>O que deveria ser?</td></tr><tr><td>Causa (cause)</td><td>Por que é diferente?</td></tr><tr><td>Efeito (effect)</td><td>Qual o impacto?</td></tr></tbody></table>
+<ul>
+<li>A recomendação ataca a <strong>causa</strong>.</li>
+<li>Discordância da gestão com evidência sólida: o achado fica, a posição da gestão vai junto.</li>
+<li>Assunto grave: comunicar na hora.</li>
+<li><strong>O auditor recomenda, a gestão corrige, a auditoria acompanha (follow-up)</strong>, e o vencido vai ao comitê.</li>
+<li><strong>Garantia de qualidade</strong>: supervisão de cada trabalho e avaliações internas e externas.</li>
+<li><strong>Autoavaliação de controles (control self-assessment)</strong>: a gestão avalia, a auditoria facilita.</li>
+</ul>
+<h2>6. Infraestrutura, redes e sistemas operacionais</h2>
+<table><thead><tr><th>Componente</th><th>Risco</th><th>O auditor verifica</th></tr></thead><tbody><tr><td>Hardware</td><td>Ativo desconhecido, falta de capacidade, descarte com dados</td><td>Inventário, manutenção, capacidade, apagamento seguro</td></tr><tr><td>Firewall</td><td>Regras antigas e amplas</td><td>Negar por padrão, revisão de regras, mudança aprovada</td></tr><tr><td>Rede</td><td>Invasor alcança tudo</td><td>Segmentação, DMZ, VPN, wireless criptografado</td></tr><tr><td>Sistema operacional</td><td>Administradores em excesso, sem atualização</td><td>Hardening, baseline, patch por prazo, logs protegidos</td></tr><tr><td>Virtualização</td><td>Hipervisor comprometido, máquinas esquecidas</td><td>Acesso restrito à console, inventário de máquinas virtuais</td></tr></tbody></table>
+<h2>7. Aplicações, bancos de dados e desenvolvimento</h2>
+<table><thead><tr><th>Controle de aplicação</th><th>Exemplo</th></tr></thead><tbody><tr><td>Faixa (range check)</td><td>Idade entre 16 e 100</td></tr><tr><td>Limite (limit check)</td><td>Pagamento acima de um teto</td></tr><tr><td>Razoabilidade (reasonableness check)</td><td>Horas extras incompatíveis com o mês</td></tr><tr><td>Dígito verificador (check digit)</td><td>Pega números trocados de lugar</td></tr><tr><td>Total de lote (batch total)</td><td>Soma de valores antes e depois</td></tr><tr><td>Total de hash (hash total)</td><td>Soma de um campo sem sentido, como números de conta</td></tr><tr><td>Execução a execução (run-to-run totals)</td><td>Totais entre etapas</td></tr></tbody></table>
+<ul>
+<li><strong>Banco de dados</strong>: chave primária e estrangeira, integridade referencial, normalização, dicionário de dados. O administrador de banco tem poder total: segregação, registro e revisão.</li>
+<li><strong>Desenvolvimento (SDLC)</strong>: segurança desde os requisitos; ambientes separados; o usuário aprova no teste de aceitação (UAT); regressão protege o que já funcionava.</li>
+<li><strong>Implantação</strong>: paralela (mais segura) &gt; piloto &gt; em fases &gt; de uma vez (mais arriscada).</li>
+<li>O auditor aconselha no projeto, mas não desenha nem aprova controles.</li>
+</ul>
+<h2>8. Operações, serviços e nuvem</h2>
+<ul>
+<li><strong>Incidente</strong> restaura o serviço; <strong>problema</strong> acha a causa raiz.</li>
+<li><strong>SLA</strong>: mensurável, medido e cobrado.</li>
+<li><strong>Análise de impacto no negócio (BIA)</strong> vem antes do plano. <strong>RTO</strong> = tempo parado aceitável; <strong>RPO</strong> = perda de dados aceitável.</li>
+</ul>
+<table><thead><tr><th>Site alternativo</th><th>Prontidão</th></tr></thead><tbody><tr><td>Espelhado (mirrored)</td><td>Quase imediata</td></tr><tr><td>Quente (hot)</td><td>Horas</td></tr><tr><td>Morno (warm)</td><td>Dias</td></tr><tr><td>Frio (cold)</td><td>Semanas</td></tr><tr><td>Acordo recíproco (reciprocal)</td><td>Barato e pouco confiável</td></tr></tbody></table>
+<ul>
+<li>Backup completo, incremental (rápido de fazer, lento de restaurar) e diferencial. <strong>Teste de restauração</strong> é o controle que importa.</li>
+<li>Testes do plano, do mais leve ao mais pesado: checklist → exercício de mesa (tabletop) → simulação → paralelo → interrupção completa.</li>
+</ul>
+<table><thead><tr><th>Nuvem</th><th>O cliente cuida de</th></tr></thead><tbody><tr><td>IaaS</td><td>Sistema operacional, aplicação, dados, acessos</td></tr><tr><td>PaaS</td><td>Aplicação, dados, acessos</td></tr><tr><td>SaaS</td><td>Dados, usuários e acessos</td></tr></tbody></table>
+<p>Em qualquer modelo, <strong>os dados e o risco são do cliente</strong>. Contrato com direito de auditar (right to audit), localização dos dados e saída.</p>
+<h2>9. Temas específicos de auditoria</h2>
+<ul>
+<li>Acesso lógico: identificação → autenticação → autorização → responsabilização.</li>
+<li><strong>Multifator</strong> exige tipos diferentes (saber, ter, ser). Duas senhas não contam.</li>
+<li>Privilégio mínimo e segregação de funções; sem segregação, controle compensatório.</li>
+<li>Entrada, mudança e saída (joiners, movers, leavers): acesso antigo retirado na mudança (evita privilege creep) e desativação imediata na saída.</li>
+<li><strong>Gestão de mudanças</strong>: a população do teste vem da produção, não dos pedidos aprovados. Emergencial: registrar e aprovar depois.</li>
+</ul>
+<table><thead><tr><th>Relatório SOC</th><th>Cobre</th></tr></thead><tbody><tr><td>SOC 1</td><td>Controles que afetam as demonstrações financeiras do cliente</td></tr><tr><td>SOC 2</td><td>Segurança, disponibilidade, integridade de processamento, confidencialidade, privacidade</td></tr><tr><td>Tipo 1</td><td>Desenho, numa data</td></tr><tr><td>Tipo 2</td><td>Desenho e funcionamento, num período (mais segurança)</td></tr></tbody></table>
+<ul>
+<li>Incidentes: preparação → detecção e análise → contenção → erradicação → recuperação → lições aprendidas.</li>
+<li>NIST CSF: governar, identificar, proteger, detectar, responder, recuperar.</li>
+<li>O dono do dado (data owner) classifica e decide o acesso.</li>
+</ul>
+<h2>10. Tecnologias novas</h2>
+<table><thead><tr><th>Tecnologia</th><th>Risco principal</th><th>Pergunta do auditor</th></tr></thead><tbody><tr><td>Inteligência artificial</td><td>Viés, explicabilidade, deriva do modelo</td><td>Dados de treinamento avaliados? Modelo testado? Supervisão humana?</td></tr><tr><td>IA generativa</td><td>Alucinação, vazamento de dados</td><td>Há política de uso e proteção de dados?</td></tr><tr><td>RPA</td><td>Credenciais amplas e inseguras</td><td>O robô é tratado como usuário privilegiado?</td></tr><tr><td>DevOps e CI/CD</td><td>Mudanças sem controle</td><td>Revisão por outra pessoa e testes obrigatórios na esteira?</td></tr><tr><td>Internet das Coisas</td><td>Senhas padrão, sem atualização</td><td>Inventário, segmentação, monitoramento?</td></tr><tr><td>Blockchain</td><td>Dado errado gravado para sempre, chaves</td><td>Validação na entrada, guarda das chaves, teste dos contratos inteligentes?</td></tr><tr><td>Zero trust</td><td>—</td><td>Cada acesso é verificado, mesmo dentro da rede?</td></tr></tbody></table>
+<h2>Glossário português–inglês</h2>
+<table><thead><tr><th>Português</th><th>Inglês</th></tr></thead><tbody><tr><td>Carta de auditoria</td><td>Audit charter</td></tr><tr><td>Carta de contratação</td><td>Engagement letter</td></tr><tr><td>Trabalho de campo</td><td>Fieldwork</td></tr><tr><td>Acompanhamento</td><td>Follow-up</td></tr><tr><td>Universo de auditoria</td><td>Audit universe</td></tr><tr><td>Programa de auditoria</td><td>Audit program</td></tr><tr><td>Escopo</td><td>Scope</td></tr><tr><td>Evidência</td><td>Audit evidence</td></tr><tr><td>Reexecução</td><td>Reperformance</td></tr><tr><td>Teste de conformidade</td><td>Compliance test</td></tr><tr><td>Teste substantivo</td><td>Substantive test</td></tr><tr><td>Amostragem</td><td>Sampling</td></tr><tr><td>Papéis de trabalho</td><td>Audit work papers</td></tr><tr><td>Ceticismo profissional</td><td>Professional skepticism</td></tr><tr><td>Sinais de alerta</td><td>Red flags</td></tr><tr><td>Achado</td><td>Audit finding</td></tr><tr><td>Reunião de encerramento</td><td>Exit meeting</td></tr><tr><td>Resposta da gestão</td><td>Management response</td></tr><tr><td>Garantia de qualidade</td><td>Quality assurance</td></tr><tr><td>Autoavaliação de controles</td><td>Control self-assessment</td></tr><tr><td>Endurecimento</td><td>Hardening</td></tr><tr><td>Configuração de referência</td><td>Configuration baseline</td></tr><tr><td>Gestão de atualizações</td><td>Patch management</td></tr><tr><td>Computação do usuário final</td><td>End-user computing</td></tr><tr><td>Dígito verificador</td><td>Check digit</td></tr><tr><td>Integridade referencial</td><td>Referential integrity</td></tr><tr><td>Teste de aceitação do usuário</td><td>User acceptance testing</td></tr><tr><td>Revisão pós-implantação</td><td>Post-implementation review</td></tr><tr><td>Análise de impacto no negócio</td><td>Business impact analysis</td></tr><tr><td>Acordo de nível de serviço</td><td>Service level agreement</td></tr><tr><td>Responsabilidade compartilhada</td><td>Shared responsibility model</td></tr><tr><td>Direito de auditar</td><td>Right to audit</td></tr><tr><td>Privilégio mínimo</td><td>Least privilege</td></tr><tr><td>Segregação de funções</td><td>Segregation of duties</td></tr><tr><td>Revisão de acessos</td><td>User access review</td></tr><tr><td>Gestão de mudanças</td><td>Change management</td></tr><tr><td>Viés</td><td>Bias</td></tr><tr><td>Deriva do modelo</td><td>Model drift</td></tr><tr><td>Registro distribuído</td><td>Distributed ledger</td></tr><tr><td>Confiança zero</td><td>Zero trust</td></tr></tbody></table>
+<footer>Material independente, sem vínculo com a ISACA. IT Audit Fundamentals é marca da ISACA.</footer>
+</main>
+</body>
+</html>

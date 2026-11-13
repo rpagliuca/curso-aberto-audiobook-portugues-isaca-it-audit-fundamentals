@@ -1,0 +1,160 @@
+{
+ "slug": "p02-planejamento-e-evidencia",
+ "duracao": 406.7,
+ "cues": [
+  {
+   "id": "universo",
+   "revisao": false,
+   "t_pergunta": 9.42,
+   "pausa": 7.7,
+   "t_resposta": 20.93
+  },
+  {
+   "id": "plano-base",
+   "revisao": false,
+   "t_pergunta": 25.94,
+   "pausa": 6.2,
+   "t_resposta": 35.18
+  },
+  {
+   "id": "plano-aprova",
+   "revisao": false,
+   "t_pergunta": 43.52,
+   "pausa": 5.9,
+   "t_resposta": 51.52
+  },
+  {
+   "id": "primeiro-passo",
+   "revisao": false,
+   "t_pergunta": 59.02,
+   "pausa": 7.6,
+   "t_resposta": 70.17
+  },
+  {
+   "id": "plano-base",
+   "revisao": true,
+   "t_pergunta": 78.12,
+   "pausa": 5.5,
+   "t_resposta": 86.69
+  },
+  {
+   "id": "objetivo-escopo",
+   "revisao": false,
+   "t_pergunta": 90.59,
+   "pausa": 8.8,
+   "t_resposta": 102.56
+  },
+  {
+   "id": "limitacao",
+   "revisao": false,
+   "t_pergunta": 113.2,
+   "pausa": 10.0,
+   "t_resposta": 128.0
+  },
+  {
+   "id": "programa",
+   "revisao": false,
+   "t_pergunta": 135.81,
+   "pausa": 7.3,
+   "t_resposta": 146.77
+  },
+  {
+   "id": "especialista",
+   "revisao": false,
+   "t_pergunta": 151.49,
+   "pausa": 6.0,
+   "t_resposta": 162.14
+  },
+  {
+   "id": "limitacao",
+   "revisao": true,
+   "t_pergunta": 171.01,
+   "pausa": 10.0,
+   "t_resposta": 185.8
+  },
+  {
+   "id": "integrada",
+   "revisao": false,
+   "t_pergunta": 193.62,
+   "pausa": 7.4,
+   "t_resposta": 205.86
+  },
+  {
+   "id": "forense",
+   "revisao": false,
+   "t_pergunta": 210.65,
+   "pausa": 7.4,
+   "t_resposta": 222.27
+  },
+  {
+   "id": "evid-atributos",
+   "revisao": false,
+   "t_pergunta": 227.01,
+   "pausa": 7.5,
+   "t_resposta": 237.91
+  },
+  {
+   "id": "evid-externa",
+   "revisao": false,
+   "t_pergunta": 242.77,
+   "pausa": 7.2,
+   "t_resposta": 256.73
+  },
+  {
+   "id": "evid-atributos",
+   "revisao": true,
+   "t_pergunta": 266.56,
+   "pausa": 6.0,
+   "t_resposta": 275.96
+  },
+  {
+   "id": "entrevista",
+   "revisao": false,
+   "t_pergunta": 280.82,
+   "pausa": 7.1,
+   "t_resposta": 290.88
+  },
+  {
+   "id": "observacao-limite",
+   "revisao": false,
+   "t_pergunta": 300.59,
+   "pausa": 8.7,
+   "t_resposta": 312.46
+  },
+  {
+   "id": "reexecucao",
+   "revisao": false,
+   "t_pergunta": 318.19,
+   "pausa": 6.9,
+   "t_resposta": 328.37
+  },
+  {
+   "id": "walkthrough",
+   "revisao": false,
+   "t_pergunta": 336.95,
+   "pausa": 6.6,
+   "t_resposta": 349.06
+  },
+  {
+   "id": "reexecucao",
+   "revisao": true,
+   "t_pergunta": 353.27,
+   "pausa": 5.5,
+   "t_resposta": 362.08
+  },
+  {
+   "id": "abertura",
+   "revisao": false,
+   "t_pergunta": 366.49,
+   "pausa": 8.4,
+   "t_resposta": 379.39
+  },
+  {
+   "id": "primeiro-passo",
+   "revisao": true,
+   "t_pergunta": 384.87,
+   "pausa": 6.1,
+   "t_resposta": 394.52
+  }
+ ]
+}

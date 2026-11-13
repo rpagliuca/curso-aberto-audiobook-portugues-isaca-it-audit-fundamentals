@@ -1,0 +1,181 @@
+{
+ "slug": "p04-achados-relatorio-e-qualidade",
+ "duracao": 427.8,
+ "cues": [
+  {
+   "id": "quatro-partes",
+   "revisao": false,
+   "t_pergunta": 7.55,
+   "pausa": 7.5,
+   "t_resposta": 17.78
+  },
+  {
+   "id": "criterio",
+   "revisao": false,
+   "t_pergunta": 22.6,
+   "pausa": 9.7,
+   "t_resposta": 34.28
+  },
+  {
+   "id": "recom-causa",
+   "revisao": false,
+   "t_pergunta": 40.68,
+   "pausa": 5.6,
+   "t_resposta": 49.75
+  },
+  {
+   "id": "quatro-partes",
+   "revisao": true,
+   "t_pergunta": 57.06,
+   "pausa": 6.0,
+   "t_resposta": 65.79
+  },
+  {
+   "id": "somados",
+   "revisao": false,
+   "t_pergunta": 70.6,
+   "pausa": 7.2,
+   "t_resposta": 81.46
+  },
+  {
+   "id": "exit",
+   "revisao": false,
+   "t_pergunta": 86.11,
+   "pausa": 8.6,
+   "t_resposta": 98.75
+  },
+  {
+   "id": "discorda",
+   "revisao": false,
+   "t_pergunta": 104.39,
+   "pausa": 7.8,
+   "t_resposta": 117.18
+  },
+  {
+   "id": "implanta",
+   "revisao": false,
+   "t_pergunta": 122.24,
+   "pausa": 5.5,
+   "t_resposta": 129.73
+  },
+  {
+   "id": "recom-causa",
+   "revisao": true,
+   "t_pergunta": 137.87,
+   "pausa": 5.5,
+   "t_resposta": 146.87
+  },
+  {
+   "id": "aceitar",
+   "revisao": false,
+   "t_pergunta": 150.34,
+   "pausa": 8.2,
+   "t_resposta": 163.8
+  },
+  {
+   "id": "grave",
+   "revisao": false,
+   "t_pergunta": 169.12,
+   "pausa": 8.4,
+   "t_resposta": 183.4
+  },
+  {
+   "id": "discorda",
+   "revisao": true,
+   "t_pergunta": 188.91,
+   "pausa": 6.3,
+   "t_resposta": 200.21
+  },
+  {
+   "id": "relatorio-qual",
+   "revisao": false,
+   "t_pergunta": 205.26,
+   "pausa": 9.8,
+   "t_resposta": 217.88
+  },
+  {
+   "id": "distribuicao",
+   "revisao": false,
+   "t_pergunta": 224.36,
+   "pausa": 7.6,
+   "t_resposta": 234.3
+  },
+  {
+   "id": "followup",
+   "revisao": false,
+   "t_pergunta": 239.19,
+   "pausa": 6.0,
+   "t_resposta": 248.92
+  },
+  {
+   "id": "implanta",
+   "revisao": true,
+   "t_pergunta": 257.93,
+   "pausa": 5.5,
+   "t_resposta": 265.42
+  },
+  {
+   "id": "qa",
+   "revisao": false,
+   "t_pergunta": 268.53,
+   "pausa": 10.0,
+   "t_resposta": 282.44
+  },
+  {
+   "id": "qa-externa",
+   "revisao": false,
+   "t_pergunta": 289.17,
+   "pausa": 7.3,
+   "t_resposta": 298.75
+  },
+  {
+   "id": "csa",
+   "revisao": false,
+   "t_pergunta": 303.42,
+   "pausa": 9.3,
+   "t_resposta": 317.24
+  },
+  {
+   "id": "csa-papel",
+   "revisao": false,
+   "t_pergunta": 323.35,
+   "pausa": 5.6,
+   "t_resposta": 331.96
+  },
+  {
+   "id": "followup",
+   "revisao": true,
+   "t_pergunta": 339.18,
+   "pausa": 5.5,
+   "t_resposta": 348.37
+  },
+  {
+   "id": "gravidade",
+   "revisao": false,
+   "t_pergunta": 352.17,
+   "pausa": 9.1,
+   "t_resposta": 363.24
+  },
+  {
+   "id": "resposta-gestao",
+   "revisao": false,
+   "t_pergunta": 369.23,
+   "pausa": 7.2,
+   "t_resposta": 379.13
+  },
+  {
+   "id": "qa-indicador",
+   "revisao": false,
+   "t_pergunta": 383.73,
+   "pausa": 7.0,
+   "t_resposta": 393.69
+  },
+  {
+   "id": "gravidade",
+   "revisao": true,
+   "t_pergunta": 403.69,
+   "pausa": 7.6,
+   "t_resposta": 413.25
+  }
+ ]
+}

@@ -1,0 +1,174 @@
+{
+ "slug": "p01-funcao-de-auditoria-controles-e-riscos",
+ "duracao": 480.0,
+ "cues": [
+  {
+   "id": "fases",
+   "revisao": false,
+   "t_pergunta": 29.66,
+   "pausa": 9.4,
+   "t_resposta": 41.63
+  },
+  {
+   "id": "charter",
+   "revisao": false,
+   "t_pergunta": 53.07,
+   "pausa": 7.4,
+   "t_resposta": 65.88
+  },
+  {
+   "id": "charter-aprova",
+   "revisao": false,
+   "t_pergunta": 74.58,
+   "pausa": 7.9,
+   "t_resposta": 84.31
+  },
+  {
+   "id": "engagement",
+   "revisao": false,
+   "t_pergunta": 93.83,
+   "pausa": 7.8,
+   "t_resposta": 105.34
+  },
+  {
+   "id": "charter",
+   "revisao": true,
+   "t_pergunta": 115.94,
+   "pausa": 5.9,
+   "t_resposta": 127.25
+  },
+  {
+   "id": "reporta",
+   "revisao": false,
+   "t_pergunta": 132.04,
+   "pausa": 6.0,
+   "t_resposta": 142.04
+  },
+  {
+   "id": "indep-conflito",
+   "revisao": false,
+   "t_pergunta": 148.73,
+   "pausa": 7.7,
+   "t_resposta": 162.9
+  },
+  {
+   "id": "tres-linhas",
+   "revisao": false,
+   "t_pergunta": 174.74,
+   "pausa": 5.8,
+   "t_resposta": 183.43
+  },
+  {
+   "id": "normas",
+   "revisao": false,
+   "t_pergunta": 194.7,
+   "pausa": 6.5,
+   "t_resposta": 205.75
+  },
+  {
+   "id": "reporta",
+   "revisao": true,
+   "t_pergunta": 216.27,
+   "pausa": 5.5,
+   "t_resposta": 225.8
+  },
+  {
+   "id": "seg-razoavel",
+   "revisao": false,
+   "t_pergunta": 229.56,
+   "pausa": 8.0,
+   "t_resposta": 240.28
+  },
+  {
+   "id": "detectivo",
+   "revisao": false,
+   "t_pergunta": 248.93,
+   "pausa": 5.6,
+   "t_resposta": 257.81
+  },
+  {
+   "id": "preventivo",
+   "revisao": false,
+   "t_pergunta": 265.48,
+   "pausa": 5.6,
+   "t_resposta": 273.95
+  },
+  {
+   "id": "corretivo",
+   "revisao": false,
+   "t_pergunta": 281.69,
+   "pausa": 5.6,
+   "t_resposta": 289.53
+  },
+  {
+   "id": "detectivo",
+   "revisao": true,
+   "t_pergunta": 297.37,
+   "pausa": 5.5,
+   "t_resposta": 306.17
+  },
+  {
+   "id": "gerais",
+   "revisao": false,
+   "t_pergunta": 309.64,
+   "pausa": 8.4,
+   "t_resposta": 323.6
+  },
+  {
+   "id": "gerais-fracos",
+   "revisao": false,
+   "t_pergunta": 335.68,
+   "pausa": 5.6,
+   "t_resposta": 346.55
+  },
+  {
+   "id": "compensatorio",
+   "revisao": false,
+   "t_pergunta": 354.75,
+   "pausa": 6.1,
+   "t_resposta": 364.2
+  },
+  {
+   "id": "componentes",
+   "revisao": false,
+   "t_pergunta": 372.93,
+   "pausa": 8.5,
+   "t_resposta": 384.19
+  },
+  {
+   "id": "compensatorio",
+   "revisao": true,
+   "t_pergunta": 389.72,
+   "pausa": 5.5,
+   "t_resposta": 398.6
+  },
+  {
+   "id": "controla",
+   "revisao": false,
+   "t_pergunta": 402.43,
+   "pausa": 5.8,
+   "t_resposta": 410.52
+  },
+  {
+   "id": "materialidade",
+   "revisao": false,
+   "t_pergunta": 418.82,
+   "pausa": 6.9,
+   "t_resposta": 429.7
+  },
+  {
+   "id": "componentes",
+   "revisao": true,
+   "t_pergunta": 438.11,
+   "pausa": 7.0,
+   "t_resposta": 447.87
+  },
+  {
+   "id": "etica-sigilo",
+   "revisao": false,
+   "t_pergunta": 453.41,
+   "pausa": 5.6,
+   "t_resposta": 463.8
+  }
+ ]
+}
